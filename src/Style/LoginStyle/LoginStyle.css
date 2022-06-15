@@ -1,0 +1,52 @@
+.big-login {
+  background-color: #f3efef;
+}
+
+.big-login .login .row {
+  min-height: 100vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.big-login .login .row .login-header {
+  min-height: 13vh;
+  text-align: center;
+}
+
+.big-login .login .row .login-header h2 {
+  margin-bottom: 20px;
+}
+
+.big-login .login .row .login-card form .css-1nrlq1o-MuiFormControl-root {
+  margin: 15px 0;
+  width: 100%;
+}
+
+.big-login .login .row .login-card form .btn-login {
+  padding: 15px 0;
+  display: block;
+  border: none;
+  width: 100%;
+  background-color: transparent;
+  margin-top: 7.5px;
+  border-radius: 20px;
+  cursor: pointer;
+  border: 1px solid #919696;
+  font-size: 15px;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.big-login .login .row .login-card form .btn-login:hover {
+  background-color: #919696;
+  color: white;
+}
+/*# sourceMappingURL=LoginStyle.css.map */

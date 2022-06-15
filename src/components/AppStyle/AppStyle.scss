@@ -1,0 +1,81 @@
+.app {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+
+    .app-left {
+        width: 18%;
+        min-height: 100vh;
+        background-color: aqua;
+        transition: 0.3s ease-in-out;
+
+        .Sadibar {
+            .Sadibar-header{
+                a{
+                    .brand-img{
+                        width: 100%;
+                    }
+                    // .brand.title{
+                    //     display: none;
+                    // }
+                }
+            }
+            .Sadibar-body {}
+        }
+    }
+
+    .app-right {
+        width: 82%;
+        min-height: 100vh;
+        transition: 0.3s ease-in-out;
+
+        .navbar {
+            width: 100%;
+            height: 80px;
+            padding: 0 1%;
+            background-color: pink;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .brand {
+                display: flex;
+
+                .menu-bars {
+                    border: none;
+                    background-color: transparent;
+                    font-size: 25px;
+                    margin-right: 20px;
+
+                    svg {
+                        cursor: pointer;
+                    }
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+
+            .log-out {
+                display: flex;
+                list-style-type: none;
+                font-size: 20px;
+
+                svg {
+                    margin-left: 10px;
+                    cursor: pointer;
+                    font-size: 25px;
+                }
+            }
+        }
+    }
+
+    .app-right-active {
+        width: 96%;
+    }
+
+    .active {
+        width: 4%;
+    }
+}

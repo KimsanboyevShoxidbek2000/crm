@@ -1,27 +1,50 @@
-import React from 'react'
+import React from 'react';
 import Login from './components/login/Login';
 import AdminIndex from './components/Admin/AdminIndex';
 import RecetionIndex from './components/Reception/RecetionIndex';
 import TeachersIndex from './components/Teachers/TeachersIndex';
-import {Routes, Route} from 'react-router-dom'
-import './Style/LoginStyle/LoginStyle.css'
-import StudentIndex from "./components/Students/StudentIndex";
 
+import './Style/LoginStyle/LoginStyle.css';
+import StudentIndex from "./components/Students/StudentIndex";
+import Accountant from "./components/accountant/Accountant";
+
+import LoginSlice from './features/LoginSlice';
+import { useSelector } from 'react-redux';
 
 const App = () => {
-    return (
-        <div>
-            <Routes>
-                <Route path='/' element={<Login/>}/>
-                <Route path='/superuser' element={<AdminIndex/>}/>
-                <Route path='/teacher' element={<TeachersIndex/>}/>
-                <Route path='/reception' element={<RecetionIndex/>}/>
-                <Route path='/studnet' element={<StudentIndex/>}/>
-
-            </Routes>
-        </div>
-
-    )
+    const { superuser, accountant, teacher, student, reception} = useSelector(LoginSlice)
+    if (superuser === true) {
+        return (
+            <>
+                <AdminIndex />
+            </>
+        )
+    }
+    else if (accountant === true) {
+        return (
+            <>
+                <Accountant />
+            </>
+        )
+    }
+    else if (teacher === true) {
+        return (
+            <><TeachersIndex /></>
+        )
+    }
+    else if (reception === true) {
+        return (<> <RecetionIndex /></>)
+    }
+    else if (student === true) {
+        return (<> <StudentIndex /></>)
+    }
+    else {
+        return (
+            <>
+                <Login />
+            </>
+        )
+    }
 }
 
 export default App;
