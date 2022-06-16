@@ -8,11 +8,12 @@ import './Style/LoginStyle/LoginStyle.css';
 import StudentIndex from "./components/Students/StudentIndex";
 import Accountant from "./components/accountant/Accountant";
 
-import LoginSlice from './features/LoginSlice';
 import { useSelector } from 'react-redux';
 
 const App = () => {
-    const { superuser, accountant, teacher, student, reception} = useSelector(LoginSlice)
+    const data = useSelector(state => state.login);
+    const {superuser , accountant , student, teacher, reception} = data
+    
     if (superuser === true) {
         return (
             <>
@@ -38,13 +39,12 @@ const App = () => {
     else if (student === true) {
         return (<> <StudentIndex /></>)
     }
-    else {
-        return (
-            <>
-                <Login />
-            </>
-        )
-    }
+    return (
+        <>
+            <Login />
+        </>
+    )
+
 }
 
 export default App;

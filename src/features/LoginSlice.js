@@ -11,26 +11,26 @@ const LoginSlice = createSlice({
         accountant: false
     },
     reducers: {
-        superuser: (state) => {
-            state.superuser = true
+        superuser: (state , {payload}) => {
+            state.superuser = payload
         },
-        reception: (state) => {
-            state.reception = true
+        reception: (state , {payload}) => {
+            state.reception = payload
         },
-        teacher: (state) => {
-            state.teacher = true
+        teacher: (state , {payload}) => {
+            state.teacher = payload
         },
-        accountant: (state) => {
-            state.accountant = true
+        accountant: (state , {payload}) => {
+            state.accountant = payload
         },
-        student: (state) => {
-            state.student = true
+        student: (state , {payload}) => {
+            state.student = payload
         }
     }
 })
 
 export const {superuser , reception , teacher , accountant , student} = LoginSlice.actions;
 
-export const selectorLogin = state => state.login;
+
 
 export default LoginSlice.reducer;

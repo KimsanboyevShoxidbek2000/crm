@@ -1,6 +1,6 @@
 import React, { useState, } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import LoginSlice from '../../features/LoginSlice';
+import { useDispatch } from 'react-redux';
+import  { superuser, reception, student, accountant, teacher} from '../../features/LoginSlice';
 import {
     FormControl,
     InputLabel,
@@ -18,32 +18,34 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [eye, setEye] = useState(false);
     const [isLoading, setIsLoading] = useState(false);  
-    const loginS = useSelector(LoginSlice)
-    console.log(loginS);
-    const { superuser, reception, student, accountant, teacher} = useSelector(LoginSlice)
+    
     const dispatch = useDispatch();
     const handleSubmit = (e) => {
         setIsLoading(true)
         e.preventDefault();
         if (username.length > 0 && password.length > 0) {
-            axios.post('https://testcrmapi1.herokuapp.com/accounts/login/', { username, password })
+            let data = {
+                username: username,
+                password: password
+            }
+            axios.post('https://testcrmapi1.herokuapp.com/accounts/login/', data)
                 .then(res => res.data)
                 .then(token => {
-              
+                    console.log(token);
                     if (token.is_superuser === true && token.token.length > 0) {
-                        dispatch(superuser)
+                        dispatch(superuser(true))
                     }
                     else if (token.is_accountant === true && token.token.length > 0) {
-                        dispatch(accountant)
+                        dispatch(accountant(true))
                     }
                     else if (token.is_reception === true && token.token.length > 0) {
-                        dispatch(reception)
+                        dispatch(reception(true))
                     }
                     else if (token.is_student === true && token.token.length > 0) {
-                        dispatch(student)       
+                        dispatch(student(true))       
                     }
                     else if (token.is_teacher === true && token.token.length > 0) {
-                        dispatch(teacher)
+                        dispatch(teacher(true))
                     }
                     setIsLoading(false)
                 })
