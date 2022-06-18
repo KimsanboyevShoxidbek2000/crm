@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "../AppStyle/AppStyle.css";
 
@@ -8,8 +8,7 @@ import { FiLogOut } from 'react-icons/fi';
 
 const AdminIndex = () => {
   const [menu, setMenu] = useState(false);
- 
-
+  const navigate = useNavigate()
   return (
     <>
       <div className="app">
@@ -23,7 +22,6 @@ const AdminIndex = () => {
           <div className="Sadibar">
             <div className="Sadibar-header">
               <Link to={'/superuser'}>
-
                 <h2 className="brand-title">GeekZone</h2>
               </Link>
             </div>
@@ -69,10 +67,15 @@ const AdminIndex = () => {
               </button>
               <h1>GeekZone</h1>
             </div>
-            <li className="log-out">
-              Log Out
-              <FiLogOut />
-            </li>
+        
+              <li  className="log-out" onClick={() => {
+                localStorage.removeItem('data')
+                navigate('/');
+              }}>
+                Log Out
+                <FiLogOut />
+              </li>
+      
           </nav>
         </div>
       </div>

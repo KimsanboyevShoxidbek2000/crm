@@ -8,40 +8,46 @@ import './Style/LoginStyle/LoginStyle.css';
 import StudentIndex from "./components/Students/StudentIndex";
 import Accountant from "./components/accountant/Accountant";
 
-import { useSelector } from 'react-redux';
+import { Routes, Route } from 'react-router-dom'
 
 const App = () => {
-    const data = useSelector(state => state.login);
-    const {superuser , accountant , student, teacher, reception} = data
-    
-    if (superuser === true) {
-        return (
-            <>
-                <AdminIndex />
-            </>
-        )
-    }
-    else if (accountant === true) {
-        return (
-            <>
-                <Accountant />
-            </>
-        )
-    }
-    else if (teacher === true) {
-        return (
-            <><TeachersIndex /></>
-        )
-    }
-    else if (reception === true) {
-        return (<> <RecetionIndex /></>)
-    }
-    else if (student === true) {
-        return (<> <StudentIndex /></>)
-    }
+
+    // let data = JSON.parse(localStorage.getItem('data'))
+    // const { is_accountant, is_reception, is_student, is_superuser, is_teacher } = data
+
+    //     if (is_superuser === true) {
+    //         return (
+    //             <>
+    //                 <Routes>
+    //                     <Route path='/' element={<AdminIndex />} />
+    //                 </Routes>
+    //             </>
+    //         )
+    //     }
+    //     else if (is_accountant === true) {
+    //         return (
+    //             <>
+    //                 <Accountant />
+    //             </>
+    //         )
+    //     }
+    //     else if (is_teacher === true) {
+    //         return (
+    //             <><TeachersIndex /></>
+    //         )
+    //     }
+    //     else if (is_reception === true) {
+    //         return (<> <RecetionIndex /></>)
+    //     }
+    //     else if (is_student === true) {
+    //         return (<> <StudentIndex /></>)
+    //     }
+ 
     return (
         <>
-            <Login />
+            <Routes>
+                <Route path='/' element={<Login />} />
+            </Routes>
         </>
     )
 

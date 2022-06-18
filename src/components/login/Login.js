@@ -1,6 +1,6 @@
 import React, { useState, } from 'react';
-import { useDispatch } from 'react-redux';
-import  { superuser, reception, student, accountant, teacher} from '../../features/LoginSlice';
+// import { useDispatch } from 'react-redux';
+// import  { superuser, reception, student, accountant, teacher} from '../../features/LoginSlice';
 import {
     FormControl,
     InputLabel,
@@ -12,14 +12,15 @@ import {
 import { HiOutlineEyeOff, HiOutlineEye } from 'react-icons/hi';
 import '../../Style/LoginStyle/LoginStyle.css';
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [eye, setEye] = useState(false);
     const [isLoading, setIsLoading] = useState(false);  
-    
-    const dispatch = useDispatch();
+    const navigate = useNavigate()
+    // const dispatch = useDispatch();
     const handleSubmit = (e) => {
         setIsLoading(true)
         e.preventDefault();
@@ -28,26 +29,13 @@ const Login = () => {
                 username: username,
                 password: password
             }
-            axios.post('https://testcrmapi1.herokuapp.com/accounts/login/', data)
+            axios.post(`${process.env.REACT_APP_CRM_API}accounts/login/`, data)
                 .then(res => res.data)
                 .then(token => {
-                    console.log(token);
-                    if (token.is_superuser === true && token.token.length > 0) {
-                        dispatch(superuser(true))
-                    }
-                    else if (token.is_accountant === true && token.token.length > 0) {
-                        dispatch(accountant(true))
-                    }
-                    else if (token.is_reception === true && token.token.length > 0) {
-                        dispatch(reception(true))
-                    }
-                    else if (token.is_student === true && token.token.length > 0) {
-                        dispatch(student(true))       
-                    }
-                    else if (token.is_teacher === true && token.token.length > 0) {
-                        dispatch(teacher(true))
-                    }
+                    const {is_superuser , is_student , is_teacher , is_reception , is_accountant , user_id} = token
+                    localStorage.setItem('data' , JSON.stringify({is_superuser , is_student , is_teacher , is_reception , is_accountant , user_id}))
                     setIsLoading(false)
+                    navigate('/');
                 })
                 .catch(err => {
                     console.log(err)
