@@ -1,6 +1,4 @@
 import React, { useState, } from 'react';
-// import { useDispatch } from 'react-redux';
-// import  { superuser, reception, student, accountant, teacher} from '../../features/LoginSlice';
 import {
     FormControl,
     InputLabel,
@@ -12,15 +10,15 @@ import {
 import { HiOutlineEyeOff, HiOutlineEye } from 'react-icons/hi';
 import '../../Style/LoginStyle/LoginStyle.css';
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
+import { teacher, superuser, student, reception, accountant } from '../../redux/auth';
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [eye, setEye] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);  
-    const navigate = useNavigate()
-    // const dispatch = useDispatch();
+    const [isLoading, setIsLoading] = useState(false);
+    const dispatch = useDispatch();
     const handleSubmit = (e) => {
         setIsLoading(true)
         e.preventDefault();
@@ -32,10 +30,27 @@ const Login = () => {
             axios.post(`${process.env.REACT_APP_CRM_API}accounts/login/`, data)
                 .then(res => res.data)
                 .then(token => {
-                    const {is_superuser , is_student , is_teacher , is_reception , is_accountant , user_id} = token
-                    localStorage.setItem('data' , JSON.stringify({is_superuser , is_student , is_teacher , is_reception , is_accountant , user_id}))
+                    const { is_superuser, is_student, is_teacher, is_reception, is_accountant, user_id } = token
+                    localStorage.setItem('data', JSON.stringify({
+                        is_superuser, is_student, is_teacher, is_reception, is_accountant, user_id
+                    }))
+                    if(is_superuser){
+                        dispatch(superuser(true))
+                    }
+                    if(is_student){
+                        dispatch(student(true))
+                    }
+                    if(is_accountant){
+                        dispatch(accountant(true))
+                    }
+                    if(is_reception){
+                        dispatch(reception(true))
+                    }
+                    if(is_teacher){
+                        dispatch(teacher(true))
+                    }
                     setIsLoading(false)
-                    navigate('/');
+                   
                 })
                 .catch(err => {
                     console.log(err)
@@ -45,6 +60,7 @@ const Login = () => {
             setPassword('');
         } else {
             alert('username or password kiriting!')
+            setIsLoading(false)
         }
     }
     return (
