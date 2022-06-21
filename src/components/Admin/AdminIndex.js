@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, Routes, Route } from "react-router-dom";
 import "../AppStyle/AppStyle.css";
-
+// import axios from 'axios'
 import { RiBarChartHorizontalLine } from 'react-icons/ri';
 import { FiLogOut } from 'react-icons/fi';
 import { BrowserRouter as Router } from "react-router-dom";
@@ -9,11 +9,21 @@ import { BrowserRouter as Router } from "react-router-dom";
 import TeachersList from "./TeachersList";
 import StudentsList from "./StudentsList";
 import GroupsList from "./GroupsList";
-
+// import { useGet } from "../../hooks/useGet";
 
 
 const AdminIndex = () => {
+  // const token = JSON.parse(localStorage.getItem('token'))
   const [menu, setMenu] = useState(false);
+  // const getData = useGet('accounts/teacher-list/')
+
+  // console.log(getData);
+   fetch('https://testcrmapi1.herokuapp.com/accounts/teacher-list/')
+   .then(res => res.json())
+   .then(data => console.log(data))
+
+
+
   return (
     <>
       <Router>
@@ -24,7 +34,7 @@ const AdminIndex = () => {
             } else {
               setMenu(menu)
             }
-          }} onMouseLeave={() => {setMenu(!menu) }}>
+          }} onMouseLeave={() => { setMenu(!menu) }}>
             <div className="Sadibar">
               <div className="Sadibar-header">
                 <Link to={'/superuser'}>
@@ -93,11 +103,13 @@ const AdminIndex = () => {
                 </button>
               </form>
             </nav>
+
+            <button>get</button>
             <div className="app-right-container">
               <Routes>
-                <Route path="teachersList" element={<TeachersList/>} />
-                <Route path='studentsList' element={<StudentsList/>}/>
-                <Route path='groupsList' element={<GroupsList/>}/>
+                <Route path="teachersList" element={<TeachersList />} />
+                <Route path='studentsList' element={<StudentsList />} />
+                <Route path='groupsList' element={<GroupsList />} />
               </Routes>
             </div>
           </div>

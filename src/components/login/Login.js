@@ -30,6 +30,7 @@ const Login = () => {
             axios.post(`${process.env.REACT_APP_CRM_API}accounts/login/`, data)
                 .then(res => res.data)
                 .then(token => {
+                    localStorage.setItem('token' , JSON.stringify(token.token))
                     const { is_superuser, is_student, is_teacher, is_reception, is_accountant, user_id } = token
                     localStorage.setItem('data', JSON.stringify({
                         is_superuser, is_student, is_teacher, is_reception, is_accountant, user_id
