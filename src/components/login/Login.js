@@ -12,13 +12,14 @@ import '../../Style/LoginStyle/LoginStyle.css';
 import axios from "axios";
 import { useDispatch } from 'react-redux'
 import { teacher, superuser, student, reception, accountant } from '../../redux/auth';
-
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [eye, setEye] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const dispatch = useDispatch();
+    const navigate = useNavigate()
     const handleSubmit = (e) => {
         setIsLoading(true)
         e.preventDefault();
@@ -37,18 +38,23 @@ const Login = () => {
                     }))
                     if(is_superuser){
                         dispatch(superuser(true))
+                        navigate('/homeadmin')
                     }
                     if(is_student){
                         dispatch(student(true))
+                        navigate('/studentindex')
                     }
                     if(is_accountant){
                         dispatch(accountant(true))
+                        navigate('/accountant')
                     }
                     if(is_reception){
                         dispatch(reception(true))
+                        navigate('/receptionindex')
                     }
                     if(is_teacher){
                         dispatch(teacher(true))
+                        navigate('/teacherindex')
                     }
                     setIsLoading(false)
                    

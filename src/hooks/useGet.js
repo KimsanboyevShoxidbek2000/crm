@@ -9,9 +9,7 @@ export const useGet = () => {
     // const token = JSON.parse(localStorage.getItem('token'))
 
  
-      
-
-
+    
     return<>
     </>
 }

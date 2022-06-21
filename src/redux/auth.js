@@ -12,7 +12,7 @@ const authSlice = createSlice({
         reception: false
     },
     reducers: {
-        profile_outside(state) {
+        profileoutside(state) {
             state.accountant = false;
             state.reception = false;
             state.student = false;
@@ -39,6 +39,6 @@ const authSlice = createSlice({
 })
 
 
-export const {profile_outside , superuser , student ,  teacher , accountant , reception} = authSlice.actions
+export const {profileoutside , superuser , student ,  teacher , accountant , reception} = authSlice.actions
 
 export default authSlice.reducer;
