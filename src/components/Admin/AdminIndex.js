@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 
 import "../AppStyle/AppStyle.css";
-
+import axios from "axios";
 import { RiBarChartHorizontalLine } from 'react-icons/ri';
 import { FiLogOut } from 'react-icons/fi';
 import { Link, Routes, useNavigate, Route } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { profileoutside } from "../../redux/auth";
-
+// import { useGet } from '../../hooks/useGet'
+// pages
 import HomeAdmin from "./HomeAdmin";
 import Accountant from "../accountant/Accountant";
 import TeachersIndex from "../Teachers/TeachersIndex";
@@ -31,16 +32,14 @@ const AdminIndex = () => {
     // const getData = useGet('accounts/teacher-list/')
 
     // console.log(getData);
-    // useEffect(() => {
-    //     async function get_fun() {
-    //         axios.get('https://testcrmapi1.herokuapp.com/accounts/teacher-list/')
-    //             .then(res => res.data)
-    //             .then(data => console.log(data));
-    //     }
-    //     get_fun()
-    // }, [])
-
-
+    useEffect(() => {
+        async function get_fun() {
+           const response = await axios.get('https://testcrmapi1.herokuapp.com/accounts/teacher-list/')
+           const data = await response.data         
+           console.log(data);
+        }
+        get_fun()
+    }, [])
     return (
         <>
 
@@ -129,7 +128,6 @@ const AdminIndex = () => {
                                     </nav>
                                 </>
                             )
-
                             : (<></>)
                     }
                     <div className="app-right-container">
@@ -140,7 +138,7 @@ const AdminIndex = () => {
                                     <>
                                         <Routes>
                                             <Route path='superuser' element={<HomeAdmin />} />
-                                            <Route path='studentsList' element={<StudentList/>} />
+                                            <Route path='studentsList' element={<StudentList />} />
                                             <Route path='teachersList' element={<TeachersList />} />
                                             <Route path='GroupsList' element={<GroupsList />} />
                                         </Routes>
@@ -181,7 +179,7 @@ const AdminIndex = () => {
                                 ? (
                                     <>
                                         <Routes>
-                                            <Route path='receptionindex' element={<RecetionIndex/>} />
+                                            <Route path='receptionindex' element={<RecetionIndex />} />
                                         </Routes>
                                     </>
                                 )
@@ -191,20 +189,19 @@ const AdminIndex = () => {
                         }
                         {/* error routes */}
                         {
-                          ((superuser || is_superuser) || (reception || is_reception) || (student || is_student) || (teacher || is_teacher) || (accountant || is_accountant))
-                          ? (<></>)
-                          :(
-                            <>
-                               <Routes>
-                                <Route path="/" element={<Login/>}/>
-                               </Routes>
-                            </>
-                          )
+                            ((superuser || is_superuser) || (reception || is_reception) || (student || is_student) || (teacher || is_teacher) || (accountant || is_accountant))
+                                ? (<></>)
+                                : (
+                                    <>
+                                        <Routes>
+                                            <Route path="/" element={<Login />} />
+                                        </Routes>
+                                    </>
+                                )
                         }
                     </div>
                 </div>
             </div>
-
         </>
     );
 };
