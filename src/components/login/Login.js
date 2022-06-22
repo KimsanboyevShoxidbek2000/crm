@@ -38,7 +38,7 @@ const Login = () => {
                     }))
                     if(is_superuser){
                         dispatch(superuser(true))
-                        navigate('/homeadmin')
+                        navigate('/superuser')
                     }
                     if(is_student){
                         dispatch(student(true))

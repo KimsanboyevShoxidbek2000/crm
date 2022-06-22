@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React , {useState , useEffect} from 'react'
+import  {useState , useEffect} from 'react'
 
 const usePost = (url , payload) => {
     const [res , setRes] = useState(null);
@@ -11,8 +11,7 @@ const usePost = (url , payload) => {
             setRes(data)
         }
         post_fun()
-    } , [])
+    } , [url, payload])
   return res
 }
-
 export default usePost

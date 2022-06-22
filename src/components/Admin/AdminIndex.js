@@ -1,28 +1,20 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 
 import "../AppStyle/AppStyle.css";
 
 import { RiBarChartHorizontalLine } from 'react-icons/ri';
 import { FiLogOut } from 'react-icons/fi';
-import { Link, Routes, Route, useNavigate } from "react-router-dom";
-import { useSelector , useDispatch } from 'react-redux';
-import {profileoutside} from "../../redux/auth";
-//  pages
-import Login from '../login/Login';
-import StudentIndex from '../Students/StudentIndex';
-import TeacherIndex from "../Teachers/TeachersIndex";
-import ReceptionIndex from '../Reception/RecetionIndex';
-import Accountant from '../accountant/Accountant'
-import TeachersList from "./TeachersList";
-import StudentsList from "./StudentsList";
-import GroupsList from "./GroupsList";
-import HomeAdmin from "./HomeAdmin";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import { profileoutside } from "../../redux/auth";
+import {useRoutesa} from "../../hooks/useRoutes";
 
 const AdminIndex = () => {
+     const useRoutes  = useRoutesa()
     let navigate = useNavigate();
     const dispatch = useDispatch()
     const auth = useSelector(state => state);
-    const { superuser, student, accountant, teacher, reception} = auth.auth
+    const { superuser, student, accountant, teacher, reception } = auth.auth
     let data = JSON.parse(localStorage.getItem('data'))
     const { is_accountant, is_reception, is_student, is_superuser, is_teacher } = data
 
@@ -32,9 +24,14 @@ const AdminIndex = () => {
     // const getData = useGet('accounts/teacher-list/')
 
     // console.log(getData);
-    // fetch('https://testcrmapi1.herokuapp.com/accounts/teacher-list/')
-    //     .then(res => res.json())
-    //     .then(data => console.log(data))
+    // useEffect(() => {
+    //     async function get_fun() {
+    //         axios.get('https://testcrmapi1.herokuapp.com/accounts/teacher-list/')
+    //             .then(res => res.data)
+    //             .then(data => console.log(data));
+    //     }
+    //     get_fun()
+    // }, [])
 
 
     return (
@@ -129,17 +126,7 @@ const AdminIndex = () => {
                             : (<></>)
                     }
                     <div className="app-right-container">
-                        <Routes>
-                            <Route path="homeadmin" element={<HomeAdmin/>}/>
-                            <Route path="/" element={<Login />} />
-                            <Route path="accountantindex" element={<Accountant />} />
-                            <Route path="teacherindex" element={<TeacherIndex />} />
-                            <Route path="studentindex" element={<StudentIndex />} />
-                            <Route path="receptionindex" element={<ReceptionIndex />} />
-                            <Route path="teachersList" element={<TeachersList />} />
-                            <Route path='studentsList' element={<StudentsList />} />
-                            <Route path='groupsList' element={<GroupsList />} />
-                        </Routes>
+                      {useRoutes}        
                     </div>
                 </div>
             </div>
