@@ -1,16 +1,23 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 
 import "../AppStyle/AppStyle.css";
 
 import { RiBarChartHorizontalLine } from 'react-icons/ri';
 import { FiLogOut } from 'react-icons/fi';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Routes, useNavigate, Route } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { profileoutside } from "../../redux/auth";
-import {useRoutesa} from "../../hooks/useRoutes";
+
+import HomeAdmin from "./HomeAdmin";
+import Accountant from "../accountant/Accountant";
+import TeachersIndex from "../Teachers/TeachersIndex";
+import RecetionIndex from "../Reception/RecetionIndex";
+import Login from "../login/Login";
+import StudentList from "./StudentsList";
+import TeachersList from "./TeachersList";
+import GroupsList from "./GroupsList";
 
 const AdminIndex = () => {
-     const useRoutes  = useRoutesa()
     let navigate = useNavigate();
     const dispatch = useDispatch()
     const auth = useSelector(state => state);
@@ -126,7 +133,74 @@ const AdminIndex = () => {
                             : (<></>)
                     }
                     <div className="app-right-container">
-                      {useRoutes}        
+                        {/* superuser routes */}
+                        {
+                            (superuser || is_superuser)
+                                ? (
+                                    <>
+                                        <Routes>
+                                            <Route path='superuser' element={<HomeAdmin />} />
+                                            <Route path='studentsList' element={<StudentList/>} />
+                                            <Route path='teachersList' element={<TeachersList />} />
+                                            <Route path='GroupsList' element={<GroupsList />} />
+                                        </Routes>
+                                    </>
+                                )
+                                : (<></>)
+                        }
+                        {/* accountant routes */}
+                        {
+                            (accountant || is_accountant)
+                                ? (
+                                    <>
+                                        <Routes>
+                                            <Route path='accountant' element={<Accountant />} />
+                                        </Routes>
+                                    </>
+                                )
+                                : (<></>)
+                        }
+                        {/* teacher routes */}
+                        {
+                            (teacher || is_teacher)
+                                ? (
+                                    <>
+                                        <Routes>
+                                            <Route path='teacherindex' element={<TeachersIndex />} />
+                                        </Routes>
+                                    </>
+                                )
+                                : (
+                                    <>
+                                    </>
+                                )
+                        }
+                        {/* reception routes */}
+                        {
+                            (reception || is_reception)
+                                ? (
+                                    <>
+                                        <Routes>
+                                            <Route path='receptionindex' element={<RecetionIndex/>} />
+                                        </Routes>
+                                    </>
+                                )
+                                : (
+                                    <></>
+                                )
+                        }
+                        {/* error routes */}
+                        {
+                          ((superuser || is_superuser) || (reception || is_reception) || (student || is_student) || (teacher || is_teacher) || (accountant || is_accountant))
+                          ? (<></>)
+                          :(
+                            <>
+                               <Routes>
+                                <Route path="/" element={<Login/>}/>
+                               </Routes>
+                            </>
+                          )
+                        }
                     </div>
                 </div>
             </div>
