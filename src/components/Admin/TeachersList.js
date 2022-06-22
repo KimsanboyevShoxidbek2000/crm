@@ -1,58 +1,180 @@
-import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import React, { useState } from 'react';
 
-function createData(num, name, calories, fat, carbs, protein) {
-    return {num ,  name, calories, fat, carbs, protein };
-}
+import './componentsStyle/CopStyle.css'
 
-const rows = [
-    createData(1, 'Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData(2, 'Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData(3, 'Eclair', 262, 16.0, 24, 6.0),
-    createData(4, 'Cupcake', 305, 3.7, 67, 4.3),
-    createData(5, 'Gingerbread', 356, 16.0, 49, 3.9),
-];
+import { Button } from '@mui/material';
+const TeachersList = () => {
 
-export default function TeachersList() {
+    const datas = [
+        {
+            id: 1,
+            name: 'Shoxidbek',
+            surname: 'Kimsanboyev',
+            username: "kimsanShox",
+            address: 'MFY teshtosh',
+            phone: 9014787741
+        },
+        {
+            id: 2,
+            name: 'Shoxidbek',
+            surname: 'Kimsanboyev',
+            username: "kimsanShox",
+            address: 'MFY teshtosh',
+            phone: 9014787741
+        },
+        {
+            id: 3,
+            name: 'Shoxidbek',
+            surname: 'Kimsanboyev',
+            username: "kimsanShox",
+            address: 'MFY teshtosh',
+            phone: 9014787741
+        },
+        {
+            id: 4,
+            name: 'Shoxidbek',
+            surname: 'Kimsanboyev',
+            username: "kimsanShox",
+            address: 'MFY teshtosh',
+            phone: 9014787741
+        },
+        {
+            id: 5,
+            name: 'Shoxidbek',
+            surname: 'Kimsanboyev',
+            username: "kimsanShox",
+            address: 'MFY teshtosh',
+            phone: 9014787741
+        },
+        {
+            id: 6,
+            name: 'Shoxidbek',
+            surname: 'Kimsanboyev',
+            username: "kimsanShox",
+            address: 'MFY teshtosh',
+            phone: 9014787741
+        },
+        {
+            id: 7,
+            name: 'Shoxidbek',
+            surname: 'Kimsanboyev',
+            username: "kimsanShox",
+            address: 'MFY teshtosh',
+            phone: 9014787741
+        },
+        {
+            id: 8,
+            name: 'Shoxidbek',
+            surname: 'Kimsanboyev',
+            username: "kimsanShox",
+            address: 'MFY teshtosh',
+            phone: 9014787741
+        },
+        {
+            id: 9,
+            name: 'Shoxidbek',
+            surname: 'Kimsanboyev',
+            username: "kimsanShox",
+            address: 'MFY teshtosh',
+            phone: 9014787741
+        },
+        {
+            id: 10,
+            name: 'Shoxidbek',
+            surname: 'Kimsanboyev',
+            username: "kimsanShox",
+            address: 'MFY teshtosh',
+            phone: 9014787741
+        },
+        {
+            id: 11,
+            name: 'Shoxidbek',
+            surname: 'Kimsanboyev',
+            username: "kimsanShox",
+            address: 'MFY teshtosh',
+            phone: 9014787741
+        },
+        {
+            id: 12,
+            name: 'Shoxidbek',
+            surname: 'Kimsanboyev',
+            username: "kimsanShox",
+            address: 'MFY teshtosh',
+            phone: 9014787741
+        },
+    ]
+
+
+
     return (
-        <div>
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                    <TableHead style={{ backgroundColor: 'aqua' }}>
-                        <TableRow>
-                            <TableCell>soni</TableCell>
-                            <TableCell>Dessert (100g serving)</TableCell>
-                            <TableCell align="right">Calories</TableCell>
-                            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                            <TableCell align="right">Protein&nbsp;(g)</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {rows.map((row) => (
-                            <TableRow
-                                key={row.name}
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                            >
-                                <TableCell align='left'>{row.num}</TableCell>
-                                <TableCell component="th" scope="row">
-                                    {row.name}
-                                </TableCell>
-                                <TableCell align="right">{row.calories}</TableCell>
-                                <TableCell align="right">{row.fat}</TableCell>
-                                <TableCell align="right">{row.carbs}</TableCell>
-                                <TableCell align="right">{row.protein}</TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-        </div>
-    );
+        <>
+            <div className='teacher-list'>
+                <table className='teacher-table'>
+                    <thead>
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Surname
+                            </th>
+                            <th>
+                                Username
+                            </th>
+                            <th>
+                                Address
+                            </th>
+                            <th>
+                                Phone
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            datas && datas.map(data => {
+                                return (
+                                    <tr>
+                                      <td>
+                                        {data.id}
+                                      </td>
+                                      <td>
+                                        {data.name}
+                                      </td>
+                                      <td>
+                                        {data.surname}
+                                      </td>
+                                      <td>
+                                        {data.username}
+                                      </td>
+                                      <td>
+                                        {data.address}
+                                      </td>
+                                      <td>
+                                        {data.phone}
+                                      </td>
+                                      <td>
+                                        <Button  style={{margin: '2px'}}  variant="contained">
+                                           Edit
+                                        </Button>
+                                        <Button style={{margin: '2px'}}  variant="contained" color="error">
+                                           Delete
+                                        </Button>
+                                      </td>
+                                    </tr>
+                                )
+                            })
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </>
+    )
 }
+
+export default TeachersList;

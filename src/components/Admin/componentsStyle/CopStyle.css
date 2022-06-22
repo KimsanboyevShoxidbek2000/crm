@@ -1,0 +1,47 @@
+.group-list {
+  padding: 1%;
+}
+
+.teacher-list {
+  padding: 1%;
+}
+
+.teacher-list .teacher-table {
+  border: 1px solid #cec9c9;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.teacher-list .teacher-table thead tr {
+  border: 1px solid #cec9c9;
+}
+
+.teacher-list .teacher-table thead tr th {
+  padding: 10px 0;
+  text-align: start;
+}
+
+.teacher-list .teacher-table thead tr th:nth-child(1) {
+  padding-left: 10px;
+}
+
+.teacher-list .teacher-table tbody {
+  overflow-y: scroll;
+}
+
+.teacher-list .teacher-table tbody tr {
+  border: 1.2px solid #cec9c9;
+}
+
+.teacher-list .teacher-table tbody tr td {
+  padding: 5px 0;
+}
+
+.teacher-list .teacher-table tbody tr td:nth-child(1) {
+  padding-left: 10px;
+}
+
+.student-list {
+  padding: 1%;
+}
+/*# sourceMappingURL=CopStyle.css.map */

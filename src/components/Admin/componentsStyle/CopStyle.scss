@@ -1,0 +1,55 @@
+// GroupList style start
+.group-list {
+    padding: 1%;
+}
+
+// GroupList style end
+
+
+// teacherList style start
+.teacher-list {
+    padding: 1%;
+
+    .teacher-table {
+        border: 1px solid rgb(206, 201, 201);
+        width: 100%;
+        border-collapse: collapse;
+
+        thead {
+            tr {
+                border: 1px solid rgb(206, 201, 201);
+                
+                th {
+                    padding: 10px 0;
+                    text-align: start;
+
+                    &:nth-child(1) {
+                        padding-left: 10px;
+                    }
+                }
+            }
+        }
+
+        tbody {
+            overflow-y: scroll;
+            tr {
+                border: 1.2px solid rgb(206, 201, 201);
+                td {
+                    padding: 5px 0;
+                    &:nth-child(1) {
+                        padding-left: 10px;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+// teacherList style end
+
+// studentList style start
+.student-list{
+    padding: 1%;
+}
+// studentList style end
