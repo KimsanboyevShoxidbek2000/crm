@@ -6,101 +6,207 @@ import {
     TableCell,
     TableContainer,
     TableHead,
-    TableRow
+    TableRow,
+    Button
 } from '@mui/material';
-
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 import './componentsStyle/CopStyle.css'
 
 const columns = [
-    { id: 'name', label: 'Name', minWidth: 170 },
-    { id: 'code', label: 'ISO\u00a0Code', minWidth: 100 },
+    { id: '1', label: '#' },
+    { id: 'name', label: 'Name' },
     {
-        id: 'population',
-        label: 'Population',
-        minWidth: 170,
-        align: 'right',
+        id: 'surname',
+        label: 'Surname',
+        align: 'left',
     },
     {
-        id: 'size',
-        label: 'Size\u00a0(km\u00b2)',
-        minWidth: 170,
-        align: 'right',
+        id: 'address',
+        label: 'Address',
+        align: 'left',
     },
     {
-        id: 'density',
-        label: 'Density',
-        minWidth: 170,
-        align: 'right',
+        id: 'phone',
+        label: 'Phone',
+        align: 'left',
+    },
+    {
+        id: 'action',
+        label: 'Action',
+        align: 'center',
     },
 ];
 
-function createData(name, code, population, size) {
-    const density = population / size;
-    return { name, code, population, size, density };
-}
+const datas = [
+    {
+        id: 1,
+        name: 'Shoxidbek',
+        surname: 'Kimsanboyev',
+        username: "kimsanShox",
+        address: 'MFY teshtosh',
+        phone: 9014787741
+    },
+    {
+        id: 2,
+        name: 'Shoxidbek',
+        surname: 'Kimsanboyev',
+        username: "kimsanShox",
+        address: 'MFY teshtosh',
+        phone: 9014787741
+    },
+    {
+        id: 3,
+        name: 'Shoxidbek',
+        surname: 'Kimsanboyev',
+        username: "kimsanShox",
+        address: 'MFY teshtosh',
+        phone: 9014787741
+    },
+    {
+        id: 4,
+        name: 'Shoxidbek',
+        surname: 'Kimsanboyev',
+        username: "kimsanShox",
+        address: 'MFY teshtosh',
+        phone: 9014787741
+    },
+    {
+        id: 5,
+        name: 'Shoxidbek',
+        surname: 'Kimsanboyev',
+        username: "kimsanShox",
+        address: 'MFY teshtosh',
+        phone: 9014787741
+    },
+    {
+        id: 6,
+        name: 'Shoxidbek',
+        surname: 'Kimsanboyev',
+        username: "kimsanShox",
+        address: 'MFY teshtosh',
+        phone: 9014787741
+    },
+    {
+        id: 7,
+        name: 'Shoxidbek',
+        surname: 'Kimsanboyev',
+        username: "kimsanShox",
+        address: 'MFY teshtosh',
+        phone: 9014787741
+    },
+    {
+        id: 8,
+        name: 'Shoxidbek',
+        surname: 'Kimsanboyev',
+        username: "kimsanShox",
+        address: 'MFY teshtosh',
+        phone: 9014787741
+    },
+    {
+        id: 9,
+        name: 'Shoxidbek',
+        surname: 'Kimsanboyev',
+        username: "kimsanShox",
+        address: 'MFY teshtosh',
+        phone: 9014787741
+    },
+    {
+        id: 10,
+        name: 'Shoxidbek',
+        surname: 'Kimsanboyev',
+        username: "kimsanShox",
+        address: 'MFY teshtosh',
+        phone: 9014787741
+    },
+    {
+        id: 11,
+        name: 'Shoxidbek',
+        surname: 'Kimsanboyev',
+        username: "kimsanShox",
+        address: 'MFY teshtosh',
+        phone: 9014787741
+    },
+    {
+        id: 12,
+        name: 'Shoxidbek',
+        surname: 'Kimsanboyev',
+        username: "kimsanShox",
+        address: 'MFY teshtosh',
+        phone: 9014787741
+    },
+]
 
-const rows = [
-    createData('India', 'IN', 1324171354, 3287263),
-    createData('China', 'CN', 1403500365, 9596961),
-    createData('Italy', 'IT', 60483973, 301340),
-    createData('United States', 'US', 327167434, 9833520),
-    createData('Canada', 'CA', 37602103, 9984670),
-    createData('Australia', 'AU', 25475400, 7692024),
-    createData('Germany', 'DE', 83019200, 357578),
-    createData('Ireland', 'IE', 4857000, 70273),
-    createData('Mexico', 'MX', 126577691, 1972550),
-    createData('Japan', 'JP', 126317000, 377973),
-    createData('France', 'FR', 67022000, 640679),
-    createData('United Kingdom', 'GB', 67545757, 242495),
-    createData('Russia', 'RU', 146793744, 17098246),
-    createData('Nigeria', 'NG', 200962417, 923768),
-    createData('Brazil', 'BR', 210147125, 8515767),
-];
-
-export default function ColumnGroupingTable() {
+export default function StudentsList() {
 
 
     return (
         <div className='student-list'>
             <Paper sx={{ width: '100%' }}>
+                <div className='student-header'>
+                    <div className="student-header-left">
+                        <div>
+                            <h2 className='student-staff'>
+                                Student Details
+                            </h2>
+                        </div>
+                        <div>
+                            <button className='student-staff-btn'>
+                                Add Student
+                            </button>
+                            <button className='student-staff-btn'>
+                                Pending Students
+                            </button>
+                            <button className='student-staff-btn'>
+                                Active Students
+                            </button>
+                        </div>
+                    </div>
+                    <div className="student-header-right">
+                        <input className='search-input' type="search" placeholder='Search...' />
+                    </div>
+                </div>
                 <TableContainer sx={{ maxHeight: "calc(80vh - 100px)" }}>
                     <Table stickyHeader aria-label="sticky table">
                         <TableHead>
                             <TableRow>
-                                <TableCell align="center" colSpan={2}>
-                                    Country
-                                </TableCell>
-                                <TableCell align="center" colSpan={3}>
-                                    Details
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                {columns.map((column) => (
-                                    <TableCell
-                                        key={column.id}
-                                        align={column.align}
-                                        style={{ top: 57, minWidth: column.minWidth }}
-                                    >
-                                        {column.label}
-                                    </TableCell>
-                                ))}
+                                {
+                                    columns.map((column) => (
+                                        <TableCell style={{ fontWeight: 'bold' }} key={column.id} align={column.align}>
+                                            {column.label}
+                                        </TableCell>
+                                    ))
+                                }
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {rows
-                                .map((row) => {
+                            {datas
+                                .map((data) => {
                                     return (
-                                        <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                                            {columns.map((column) => {
-                                                const value = row[column.id];
-                                                return (
-                                                    <TableCell key={column.id} align={column.align}>
-                                                        {column.format && typeof value === 'number'
-                                                            ? column.format(value)
-                                                            : value}
-                                                    </TableCell>
-                                                );
-                                            })}
+                                        <TableRow hover role="checkbox" tabIndex={-1} key={data.id}>
+                                            <TableCell>
+                                                {data.id}
+                                            </TableCell>
+                                            <TableCell>
+                                                {data.name}
+                                            </TableCell>
+                                            <TableCell>
+                                                {data.surname}
+                                            </TableCell>
+                                            <TableCell>
+                                                {data.address}
+                                            </TableCell>
+                                            <TableCell>
+                                                {data.phone}
+                                            </TableCell>
+                                            <TableCell align='center'>
+                                                    <Button style={{margin:'0 5px'}}  variant="outlined" startIcon={<EditIcon />}>
+                                                        Edit
+                                                    </Button >
+                                                    <Button style={{margin:'0 5px'}} color='error' variant="outlined" startIcon={<DeleteIcon />}>
+                                                        Delete
+                                                    </Button>
+                                            </TableCell>
                                         </TableRow>
                                     );
                                 })}

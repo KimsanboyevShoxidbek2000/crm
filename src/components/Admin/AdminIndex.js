@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import "../AppStyle/AppStyle.css";
 import axios from "axios";
@@ -7,6 +7,7 @@ import { FiLogOut } from 'react-icons/fi';
 import { Link, Routes, useNavigate, Route } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { profileoutside } from "../../redux/auth";
+import { Button, Menu, MenuItem } from "@mui/material";
 // import { useGet } from '../../hooks/useGet'
 // pages
 import HomeAdmin from "./HomeAdmin";
@@ -17,7 +18,7 @@ import Login from "../login/Login";
 import StudentList from "./StudentsList";
 import TeachersList from "./TeachersList";
 import GroupsList from "./GroupsList";
-
+import TeacherCreate from "./TeacherCreate";
 const AdminIndex = () => {
     let navigate = useNavigate();
     const dispatch = useDispatch()
@@ -25,21 +26,29 @@ const AdminIndex = () => {
     const { superuser, student, accountant, teacher, reception } = auth.auth
     let data = JSON.parse(localStorage.getItem('data'))
     const { is_accountant, is_reception, is_student, is_superuser, is_teacher } = data
-
-
-    // const token = JSON.parse(localStorage.getItem('token'))
     const [menu, setMenu] = useState(false);
-    // const getData = useGet('accounts/teacher-list/')
 
-    // console.log(getData);
-    useEffect(() => {
-        async function get_fun() {
-           const response = await axios.get('https://testcrmapi1.herokuapp.com/accounts/teacher-list/')
-           const data = await response.data         
-           console.log(data);
-        }
-        get_fun()
-    }, [])
+
+    // logout function start
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+    // logout function end
+
+
+    // function get_fun() {
+    //     axios.get('https://testcrmapi1.herokuapp.com/accounts/teacher-list/')
+    //         .then(res => res.data)
+    //         .then(data => data)
+    // }
+    // useEffect(() => {
+    //     get_fun()
+    // }, [])
     return (
         <>
 
@@ -77,6 +86,10 @@ const AdminIndex = () => {
                                                     <i className="fa fa-bars" aria-hidden="true"></i>
                                                     <Link to='/GroupsList'>Group</Link>
                                                 </li>
+                                                <li>
+                                                    <i className="fa fa-bars" aria-hidden="true"></i>
+                                                    <Link to='/teacherCreate'>Add Teacher</Link>
+                                                </li>
                                             </ul>
                                         </div>
                                         <div className="Saidbar-footer">
@@ -109,22 +122,43 @@ const AdminIndex = () => {
                                             </button>
                                             <h1>GeekZone</h1>
                                         </div>
-                                        <li className="log-out" onClick={() => {
-                                            localStorage.setItem("data", JSON.stringify(
-                                                {
-                                                    is_superuser: false,
-                                                    is_student: false,
-                                                    is_teacher: false,
-                                                    is_accountant: false,
-                                                    is_reception: false
-                                                }
-                                            ))
-                                            navigate('/');
-                                            dispatch(profileoutside())
-                                        }}>
-                                            Log Out
-                                            <FiLogOut />
-                                        </li>
+                                        <div>
+                                            <Button
+                                                id="basic-button"
+                                                aria-controls={open ? 'basic-menu' : undefined}
+                                                aria-haspopup="true"
+                                                aria-expanded={open ? 'true' : undefined}
+                                                onClick={handleClick}
+                                            >
+                                                Dashboard
+                                            </Button>
+                                            <Menu
+                                                id="basic-menu"
+                                                anchorEl={anchorEl}
+                                                open={open}
+                                                onClose={handleClose}
+                                                MenuListProps={{
+                                                    'aria-labelledby': 'basic-button',
+                                                }}
+                                            >
+                                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                                <MenuItem onClick={() => {
+                                                    localStorage.setItem("data", JSON.stringify(
+                                                        {
+                                                            is_superuser: false,
+                                                            is_student: false,
+                                                            is_teacher: false,
+                                                            is_accountant: false,
+                                                            is_reception: false
+                                                        }
+                                                    ))
+                                                    navigate('/');
+                                                    dispatch(profileoutside())
+                                                    handleClose()
+                                                }}>Logout</MenuItem>
+                                            </Menu>
+                                        </div>
                                     </nav>
                                 </>
                             )
@@ -141,6 +175,7 @@ const AdminIndex = () => {
                                             <Route path='studentsList' element={<StudentList />} />
                                             <Route path='teachersList' element={<TeachersList />} />
                                             <Route path='GroupsList' element={<GroupsList />} />
+                                            <Route path='teacherCreate' element={<TeacherCreate/>}/>
                                         </Routes>
                                     </>
                                 )

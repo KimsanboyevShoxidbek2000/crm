@@ -1,6 +1,21 @@
 
 .big-login{
-    background-color: rgb(243, 239, 239);
+    // background-image: url('https://i.pinimg.com/originals/63/97/23/639723a34ff2644545e6390d51625b9d.jpg');
+    // background-repeat: no-repeat;
+    // background-position: center;
+    // background-size: cover;
+    // position: relative;
+    // z-index: 1;
+    // &::before{
+    //     z-index: -1;
+    //     content: '';
+    //     width: 100%;
+    //     min-height: 100vh;
+    //     position: absolute;
+    //     left: 0;
+    //     top: 0;
+    //     background-color: rgba(0,0,0,0.5);
+    // }
     .login {
         .row {
             min-height: 100vh;
@@ -11,8 +26,10 @@
             .login-header {
                 min-height: 13vh;
                 text-align: center;
+               
                 h2 {
                     margin-bottom: 20px;
+                    
                 }
             }
     

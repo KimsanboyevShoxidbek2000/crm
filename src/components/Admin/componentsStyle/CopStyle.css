@@ -42,6 +42,168 @@
 }
 
 .student-list {
+  background-color: #fffefe;
   padding: 1%;
+}
+
+.student-list .student-header {
+  width: 100%;
+  height: 60px;
+  background-color: #eae6e6;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 1%;
+}
+
+.student-list .student-header .student-header-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.student-list .student-header .student-header-left .student-staff-btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: 1px solid #26ac26;
+  background-color: transparent;
+  color: #26ac26;
+  cursor: pointer;
+  font-weight: 400;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  font-size: 16px;
+  margin-left: 20px;
+}
+
+.student-list .student-header .student-header-left .student-staff-btn:nth-child(1) {
+  border: 1px solid #26ac26;
+  color: #26ac26;
+}
+
+.student-list .student-header .student-header-left .student-staff-btn:nth-child(1):hover {
+  color: white;
+  background-color: #26ac26;
+}
+
+.student-list .student-header .student-header-left .student-staff-btn:nth-child(2) {
+  border: 1px solid #267bac;
+  color: #267bac;
+}
+
+.student-list .student-header .student-header-left .student-staff-btn:nth-child(2):hover {
+  color: white;
+  background-color: #267bac;
+}
+
+.student-list .student-header .student-header-left .student-staff-btn:nth-child(3) {
+  border: 1px solid #b5d621;
+  color: #b5d621;
+}
+
+.student-list .student-header .student-header-left .student-staff-btn:nth-child(3):hover {
+  color: white;
+  background-color: #b5d621;
+}
+
+.student-list .student-header .student-header-right .search-input {
+  padding: 5px;
+  border: none;
+  font-size: 14px;
+}
+
+.student-list .student-header .student-header-right .search-input:focus, .student-list .student-header .student-header-right .search-input:hover {
+  outline: none;
+}
+
+.page_inputs {
+  /* reset input */
+}
+
+.page_inputs .form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.page_inputs .form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #9b9b9b;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #9b9b9b;
+  padding: 7px 0;
+  background: transparent;
+  -webkit-transition: border-color 0.2s;
+  transition: border-color 0.2s;
+}
+
+.page_inputs .form__field::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.page_inputs .form__field:-ms-input-placeholder {
+  color: transparent;
+}
+
+.page_inputs .form__field::-ms-input-placeholder {
+  color: transparent;
+}
+
+.page_inputs .form__field::placeholder {
+  color: transparent;
+}
+
+.page_inputs .form__field:placeholder-shown ~ .form__label {
+  font-size: 1rem;
+  cursor: text;
+  top: 20px;
+}
+
+.page_inputs .form__field:focus {
+  color: #11998e;
+}
+
+.page_inputs .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  font-size: 0.8rem;
+  color: #9b9b9b;
+}
+
+.page_inputs .form__field:focus {
+  padding-bottom: 6px;
+  font-weight: 500;
+  border-width: 3px;
+  -o-border-image: linear-gradient(to right, #11998e, #38ef7d);
+     border-image: -webkit-gradient(linear, left top, right top, from(#11998e), to(#38ef7d));
+     border-image: linear-gradient(to right, #11998e, #38ef7d);
+  border-image-slice: 1;
+}
+
+.page_inputs .form__field:focus ~ .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  font-size: 0.8rem;
+  color: #11998e;
+  font-weight: 500;
 }
 /*# sourceMappingURL=CopStyle.css.map */
