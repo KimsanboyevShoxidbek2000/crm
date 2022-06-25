@@ -1,16 +1,15 @@
-import axios from 'axios'
-import React from 'react'
-// import { useState, useEffect } from 'react'
+import {useState , useEffect} from 'react';
+import axios from 'axios';
 
-export const useGet = () => {
-
-    // const [res, setRes] = useState();
-
-    // const token = JSON.parse(localStorage.getItem('token'))
-
- 
-    
-    return<>
-    </>
+export const useGet = (url) => {
+    const [data , setData] = useState(null)
+    useEffect(() => {
+     const get_fun = async () => {
+           const response = await axios.get(`https://jsonplaceholder.typicode.com/${url}`)
+           const res = await response.data
+           setData(res)
+        }
+        get_fun()
+    } , [url])
+    return data
 }
-

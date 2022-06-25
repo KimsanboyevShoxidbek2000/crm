@@ -71,58 +71,244 @@
           align-items: center;
 }
 
-.student-list .student-header .student-header-left .student-staff-btn {
-  padding: 8px 16px;
-  border-radius: 4px;
-  border: 1px solid #26ac26;
-  background-color: transparent;
-  color: #26ac26;
+.student-list .student-header .student-header-left .nav-item {
+  position: relative;
+  background: white;
+  color: black;
+  text-decoration: none;
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+  padding: 10px 20px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  margin-left: 10px;
+  border: 2px solid transparent;
   cursor: pointer;
-  font-weight: 400;
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
+}
+
+.student-list .student-header .student-header-left .nav-item:nth-child(1):hover {
+  background: white;
+  color: #1e9bff;
+  border: 2px solid #1e9bff;
+}
+
+.student-list .student-header .student-header-left .nav-item:nth-child(1):hover i::before {
+  width: 20px;
+  left: 20%;
+}
+
+.student-list .student-header .student-header-left .nav-item:nth-child(1):hover i::after {
+  width: 20px;
+  left: 80%;
+}
+
+.student-list .student-header .student-header-left .nav-item:nth-child(1) i {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.student-list .student-header .student-header-left .nav-item:nth-child(1) i::before {
+  content: '';
+  position: absolute;
+  top: -5.5px;
+  left: 80%;
+  width: 10px;
+  height: 5px;
+  border: 2px solid #1e9bff;
+  background: white;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.student-list .student-header .student-header-left .nav-item:nth-child(1) i::after {
+  content: '';
+  position: absolute;
+  bottom: -5.5px;
+  left: 20%;
+  width: 10px;
+  height: 5px;
+  border: 2px solid #1e9bff;
+  background: white;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.student-list .student-header .student-header-left .nav-item:nth-child(2):hover {
+  background: white;
+  color: #e3d10e;
+  border: 2px solid #e3d10e;
+}
+
+.student-list .student-header .student-header-left .nav-item:nth-child(2):hover i::before {
+  width: 20px;
+  left: 20%;
+}
+
+.student-list .student-header .student-header-left .nav-item:nth-child(2):hover i::after {
+  width: 20px;
+  left: 80%;
+}
+
+.student-list .student-header .student-header-left .nav-item:nth-child(2) i {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.student-list .student-header .student-header-left .nav-item:nth-child(2) i::before {
+  content: '';
+  position: absolute;
+  top: -5.5px;
+  left: 80%;
+  width: 10px;
+  height: 5px;
+  border: 2px solid #e3d10e;
+  background: white;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.student-list .student-header .student-header-left .nav-item:nth-child(2) i::after {
+  content: '';
+  position: absolute;
+  bottom: -5.5px;
+  left: 20%;
+  width: 10px;
+  height: 5px;
+  border: 2px solid #e3d10e;
+  background: white;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.student-list .student-header .student-header-left .nav-item:nth-child(3):hover {
+  background: white;
+  color: #11a80f;
+  border: 2px solid #11a80f;
+}
+
+.student-list .student-header .student-header-left .nav-item:nth-child(3):hover i::before {
+  width: 20px;
+  left: 20%;
+}
+
+.student-list .student-header .student-header-left .nav-item:nth-child(3):hover i::after {
+  width: 20px;
+  left: 80%;
+}
+
+.student-list .student-header .student-header-left .nav-item:nth-child(3) i {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.student-list .student-header .student-header-left .nav-item:nth-child(3) i::before {
+  content: '';
+  position: absolute;
+  top: -5.5px;
+  left: 80%;
+  width: 10px;
+  height: 5px;
+  border: 2px solid #11a80f;
+  background: white;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.student-list .student-header .student-header-left .nav-item:nth-child(3) i::after {
+  content: '';
+  position: absolute;
+  bottom: -5.5px;
+  left: 20%;
+  width: 10px;
+  height: 5px;
+  border: 2px solid #11a80f;
+  background: white;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.student-list .student-header .student-header-left .nav-item::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: transparent;
+}
+
+.student-list .student-header .student-header-left .nav-item span {
+  position: relative;
+  z-index: 1;
+}
+
+.student-list .student-header .student-header-right .search {
+  position: relative;
+}
+
+.student-list .student-header .student-header-right .search .input {
+  background-color: #fff;
+  border: 0;
   font-size: 16px;
-  margin-left: 20px;
+  padding: 10px;
+  height: 30px;
+  width: 30px;
+  -webkit-transition: width 0.3s ease;
+  transition: width 0.3s ease;
 }
 
-.student-list .student-header .student-header-left .student-staff-btn:nth-child(1) {
-  border: 1px solid #26ac26;
-  color: #26ac26;
-}
-
-.student-list .student-header .student-header-left .student-staff-btn:nth-child(1):hover {
-  color: white;
-  background-color: #26ac26;
-}
-
-.student-list .student-header .student-header-left .student-staff-btn:nth-child(2) {
-  border: 1px solid #267bac;
-  color: #267bac;
-}
-
-.student-list .student-header .student-header-left .student-staff-btn:nth-child(2):hover {
-  color: white;
-  background-color: #267bac;
-}
-
-.student-list .student-header .student-header-left .student-staff-btn:nth-child(3) {
-  border: 1px solid #b5d621;
-  color: #b5d621;
-}
-
-.student-list .student-header .student-header-left .student-staff-btn:nth-child(3):hover {
-  color: white;
-  background-color: #b5d621;
-}
-
-.student-list .student-header .student-header-right .search-input {
-  padding: 5px;
-  border: none;
-  font-size: 14px;
-}
-
-.student-list .student-header .student-header-right .search-input:focus, .student-list .student-header .student-header-right .search-input:hover {
+.student-list .student-header .student-header-right .search .input:focus {
   outline: none;
+}
+
+.student-list .student-header .student-header-right .search .btn {
+  background-color: #fff;
+  border: 0;
+  cursor: pointer;
+  font-size: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 30px;
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.student-list .student-header .student-header-right .search .btn:focus {
+  outline: none;
+}
+
+.student-list .student-header .student-header-right .active .input {
+  width: 200px !important;
+}
+
+.student-list .student-header .student-header-right .active .btn {
+  -webkit-transform: translateX(171px) !important;
+          transform: translateX(171px) !important;
 }
 
 .page_inputs {

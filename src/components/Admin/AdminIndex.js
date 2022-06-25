@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import "../AppStyle/AppStyle.css";
-import axios from "axios";
+
 import { RiBarChartHorizontalLine } from 'react-icons/ri';
-import { FiLogOut } from 'react-icons/fi';
+
 import { Link, Routes, useNavigate, Route } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { profileoutside } from "../../redux/auth";
 import { Button, Menu, MenuItem } from "@mui/material";
-// import { useGet } from '../../hooks/useGet'
+import { useGet } from '../../hooks/useGet'
 // pages
 import HomeAdmin from "./HomeAdmin";
 import Accountant from "../accountant/Accountant";
@@ -19,6 +19,7 @@ import StudentList from "./StudentsList";
 import TeachersList from "./TeachersList";
 import GroupsList from "./GroupsList";
 import TeacherCreate from "./TeacherCreate";
+
 const AdminIndex = () => {
     let navigate = useNavigate();
     const dispatch = useDispatch()
@@ -27,8 +28,8 @@ const AdminIndex = () => {
     let data = JSON.parse(localStorage.getItem('data'))
     const { is_accountant, is_reception, is_student, is_superuser, is_teacher } = data
     const [menu, setMenu] = useState(false);
-
-
+    const getData = useGet('posts')
+    console.log(getData);
     // logout function start
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -40,15 +41,6 @@ const AdminIndex = () => {
     };
     // logout function end
 
-
-    // function get_fun() {
-    //     axios.get('https://testcrmapi1.herokuapp.com/accounts/teacher-list/')
-    //         .then(res => res.data)
-    //         .then(data => data)
-    // }
-    // useEffect(() => {
-    //     get_fun()
-    // }, [])
     return (
         <>
 
@@ -175,7 +167,7 @@ const AdminIndex = () => {
                                             <Route path='studentsList' element={<StudentList />} />
                                             <Route path='teachersList' element={<TeachersList />} />
                                             <Route path='GroupsList' element={<GroupsList />} />
-                                            <Route path='teacherCreate' element={<TeacherCreate/>}/>
+                                            <Route path='teacherCreate' element={<TeacherCreate />} />
                                         </Routes>
                                     </>
                                 )

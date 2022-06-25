@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Paper,
     Table,
@@ -12,7 +12,7 @@ import {
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import './componentsStyle/CopStyle.css'
-
+import { FiSearch } from 'react-icons/fi';
 const columns = [
     { id: '1', label: '#' },
     { id: 'name', label: 'Name' },
@@ -139,6 +139,8 @@ const datas = [
 
 export default function StudentsList() {
 
+    const [search, setSearch] = useState(false)
+
 
     return (
         <div className='student-list'>
@@ -151,19 +153,20 @@ export default function StudentsList() {
                             </h2>
                         </div>
                         <div>
-                            <button className='student-staff-btn'>
-                                Add Student
-                            </button>
-                            <button className='student-staff-btn'>
-                                Pending Students
-                            </button>
-                            <button className='student-staff-btn'>
-                                Active Students
-                            </button>
+                            <a className='nav-item'><span>Add Student</span><i></i></a>
+                            <a className='nav-item' ><span>Pendding Students</span><i></i></a>
+                            <a className='nav-item'><span>Active Students</span><i></i></a>
                         </div>
                     </div>
                     <div className="student-header-right">
-                        <input className='search-input' type="search" placeholder='Search...' />
+                        <div className={`${search ? 'active' : ''}  search`}>
+                            <input type="text" className={`input`} placeholder="Search..." />
+                            <button className="btn" onClick={() => {
+                                setSearch(!search)
+                            }}>
+                                <FiSearch className='search_icon' />
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <TableContainer sx={{ maxHeight: "calc(80vh - 100px)" }}>
@@ -200,12 +203,12 @@ export default function StudentsList() {
                                                 {data.phone}
                                             </TableCell>
                                             <TableCell align='center'>
-                                                    <Button style={{margin:'0 5px'}}  variant="outlined" startIcon={<EditIcon />}>
-                                                        Edit
-                                                    </Button >
-                                                    <Button style={{margin:'0 5px'}} color='error' variant="outlined" startIcon={<DeleteIcon />}>
-                                                        Delete
-                                                    </Button>
+                                                <Button style={{ margin: '0 5px' }} variant="outlined" startIcon={<EditIcon />}>
+                                                    Edit
+                                                </Button >
+                                                <Button style={{ margin: '0 5px' }} color='error' variant="outlined" startIcon={<DeleteIcon />}>
+                                                    Delete
+                                                </Button>
                                             </TableCell>
                                         </TableRow>
                                     );
