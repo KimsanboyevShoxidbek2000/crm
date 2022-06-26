@@ -8,7 +8,10 @@ import { Link, Routes, useNavigate, Route } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { profileoutside } from "../../redux/auth";
 import { Button, Menu, MenuItem } from "@mui/material";
-import { useGet } from '../../hooks/useGet'
+// import { useGet } from '../../hooks/useGet'
+import {BsFillPersonFill} from 'react-icons/bs'
+
+
 // pages
 import HomeAdmin from "./HomeAdmin";
 import Accountant from "../accountant/Accountant";
@@ -19,17 +22,20 @@ import StudentList from "./StudentsList";
 import TeachersList from "./TeachersList";
 import GroupsList from "./GroupsList";
 import TeacherCreate from "./TeacherCreate";
+// import { width } from "@mui/system";
 
 const AdminIndex = () => {
     let navigate = useNavigate();
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const auth = useSelector(state => state);
-    const { superuser, student, accountant, teacher, reception } = auth.auth
-    let data = JSON.parse(localStorage.getItem('data'))
-    const { is_accountant, is_reception, is_student, is_superuser, is_teacher } = data
+    const { superuser, student, accountant, teacher, reception } = auth.auth;
+    let data = JSON.parse(localStorage.getItem('data'));
+    const { is_accountant, is_reception, is_student, is_superuser, is_teacher } = data;
     const [menu, setMenu] = useState(false);
-    const getData = useGet('posts')
-    console.log(getData);
+    // const getData = useGet('posts');
+    // console.log(getData);
+
+    
     // logout function start
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -60,7 +66,7 @@ const AdminIndex = () => {
                                 }}>
                                     <div className="Sadibar">
                                         <div className="Sadibar-header">
-                                            <Link to={'/superuser'}>
+                                            <Link to={'/'}>
                                                 <h2 className="brand-title">GeekZone</h2>
                                             </Link>
                                         </div>
@@ -121,8 +127,12 @@ const AdminIndex = () => {
                                                 aria-haspopup="true"
                                                 aria-expanded={open ? 'true' : undefined}
                                                 onClick={handleClick}
+                                                style={{
+                                                    fontSize: '25px',
+                                        
+                                                }}
                                             >
-                                                Dashboard
+                                               <BsFillPersonFill/>
                                             </Button>
                                             <Menu
                                                 id="basic-menu"
@@ -163,7 +173,7 @@ const AdminIndex = () => {
                                 ? (
                                     <>
                                         <Routes>
-                                            <Route path='superuser' element={<HomeAdmin />} />
+                                            <Route path='/' element={<HomeAdmin />} />
                                             <Route path='studentsList' element={<StudentList />} />
                                             <Route path='teachersList' element={<TeachersList />} />
                                             <Route path='GroupsList' element={<GroupsList />} />
@@ -179,7 +189,7 @@ const AdminIndex = () => {
                                 ? (
                                     <>
                                         <Routes>
-                                            <Route path='accountant' element={<Accountant />} />
+                                            <Route path='/' element={<Accountant />} />
                                         </Routes>
                                     </>
                                 )
@@ -191,7 +201,7 @@ const AdminIndex = () => {
                                 ? (
                                     <>
                                         <Routes>
-                                            <Route path='teacherindex' element={<TeachersIndex />} />
+                                            <Route path='/' element={<TeachersIndex />} />
                                         </Routes>
                                     </>
                                 )

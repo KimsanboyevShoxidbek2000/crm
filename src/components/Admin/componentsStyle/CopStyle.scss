@@ -56,6 +56,7 @@
     background-color: rgb(255, 254, 254);
     padding: 1%;
 
+
     .student-header {
         width: 100%;
         height: 60px;
@@ -64,12 +65,10 @@
         justify-content: space-between;
         align-items: center;
         padding: 0 1%;
-        
+
         .student-header-left {
             display: flex;
             align-items: center;
-         
-            
 
             .nav-item {
                 position: relative;
@@ -81,15 +80,17 @@
                 padding: 10px 20px;
                 transition: 0.5s;
                 margin-left: 10px;
-                border: 2px solid transparent ;
+                border: 2px solid transparent;
                 cursor: pointer;
+
                 &:nth-child(1) {
                     &:hover {
                         // letter-spacing: 0.25em;
                         background: white;
-                        color:#1e9bff;
+                        color: #1e9bff;
                         // box-shadow: 0 0 20px #1e9bff;
-                       border: 2px solid #1e9bff ;
+                        border: 2px solid #1e9bff;
+
                         i {
                             &::before {
                                 width: 20px;
@@ -140,9 +141,10 @@
                     &:hover {
                         // letter-spacing: 0.25em;
                         background: white;
-                        color:#e3d10e;
+                        color: #e3d10e;
                         // box-shadow: 0 0 20px #1e9bff;
-                       border: 2px solid #e3d10e ;
+                        border: 2px solid #e3d10e;
+
                         i {
                             &::before {
                                 width: 20px;
@@ -193,9 +195,10 @@
                     &:hover {
                         // letter-spacing: 0.25em;
                         background: white;
-                        color:#11a80f;
+                        color: #11a80f;
                         // box-shadow: 0 0 20px #1e9bff;
-                       border: 2px solid #11a80f ;
+                        border: 2px solid #11a80f;
+
                         i {
                             &::before {
                                 width: 20px;
@@ -269,6 +272,7 @@
                     height: 30px;
                     width: 30px;
                     transition: width 0.3s ease;
+
                     &:focus {
                         outline: none;
                     }
@@ -288,7 +292,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                
+
 
                     &:focus {
                         outline: none;

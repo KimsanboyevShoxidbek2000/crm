@@ -1,4 +1,5 @@
 import React, { useState, } from 'react';
+
 import {
     FormControl,
     InputLabel,
@@ -8,11 +9,13 @@ import {
     CircularProgress,
 } from '@mui/material';
 import { HiOutlineEyeOff, HiOutlineEye } from 'react-icons/hi';
+
 import '../../Style/LoginStyle/LoginStyle.css';
 import axios from "axios";
 import { useDispatch } from 'react-redux'
 import { teacher, superuser, student, reception, accountant } from '../../redux/auth';
 import { useNavigate } from 'react-router-dom';
+const url = process.env.REACT_APP_CRM_API
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -28,7 +31,7 @@ const Login = () => {
                 username: username,
                 password: password
             }
-            axios.post(`${process.env.REACT_APP_CRM_API}accounts/login/`, data)
+            axios.post(`${url}accounts/login/`, data)
                 .then(res => res.data)
                 .then(token => {
                     localStorage.setItem('token' , JSON.stringify(token.token))
@@ -38,7 +41,7 @@ const Login = () => {
                     }))
                     if(is_superuser){
                         dispatch(superuser(true))
-                        navigate('/superuser')
+                        navigate('/')
                     }
                     if(is_student){
                         dispatch(student(true))
@@ -46,7 +49,7 @@ const Login = () => {
                     }
                     if(is_accountant){
                         dispatch(accountant(true))
-                        navigate('/accountant')
+                        navigate('/')
                     }
                     if(is_reception){
                         dispatch(reception(true))
@@ -54,7 +57,7 @@ const Login = () => {
                     }
                     if(is_teacher){
                         dispatch(teacher(true))
-                        navigate('/teacherindex')
+                        navigate('/')
                     }
                     setIsLoading(false)
                    
