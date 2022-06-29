@@ -1,28 +1,34 @@
 import React, { useState } from "react";
-
+import BrandImg from '../../assets/images/geekzone.png'
 import "../AppStyle/AppStyle.css";
 
-import { RiBarChartHorizontalLine } from 'react-icons/ri';
 
 import { Link, Routes, useNavigate, Route } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { profileoutside } from "../../redux/auth";
 import { Button, Menu, MenuItem } from "@mui/material";
 // import { useGet } from '../../hooks/useGet'
-import {BsFillPersonFill} from 'react-icons/bs'
 
 
+// icons
+import { BsFillPersonFill } from 'react-icons/bs'
+import { RiBarChartHorizontalLine } from 'react-icons/ri';
+import { GiTeacher } from 'react-icons/gi'
+import {MdPersonalInjury} from 'react-icons/md'
+import {GrGroup} from 'react-icons/gr'
 // pages
 import HomeAdmin from "./HomeAdmin";
 import Accountant from "../accountant/Accountant";
 import TeachersIndex from "../Teachers/TeachersIndex";
 import RecetionIndex from "../Reception/RecetionIndex";
 import Login from "../login/Login";
-import StudentList from "./StudentsList";
-import TeachersList from "./TeachersList";
-import GroupsList from "./GroupsList";
-import TeacherCreate from "./TeacherCreate";
-// import { width } from "@mui/system";
+import StudentList from "../Students/StudentsList";
+import TeachersList from "../Teachers/TeachersList";
+import GroupsList from "../../core/GroupsList";
+import TeacherCreate from "../Teachers/TeacherCreate";
+
+
+
 
 const AdminIndex = () => {
     let navigate = useNavigate();
@@ -34,8 +40,6 @@ const AdminIndex = () => {
     const [menu, setMenu] = useState(false);
     // const getData = useGet('posts');
     // console.log(getData);
-
-    
     // logout function start
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -67,27 +71,76 @@ const AdminIndex = () => {
                                     <div className="Sadibar">
                                         <div className="Sadibar-header">
                                             <Link to={'/'}>
-                                                <h2 className="brand-title">GeekZone</h2>
+                                                <h2 className="brand-title"> <img src={BrandImg} alt="Brand" /> GeekZone</h2>
                                             </Link>
                                         </div>
                                         <div className="Sadibar-body">
                                             <ul>
-                                                <li>
-                                                    <i className="fa fa-bars" aria-hidden="true"></i>
-                                                    <Link to='/teachersList'>Teachers</Link>
-                                                </li>
-                                                <li>
-                                                    <i className="fa fa-bars" aria-hidden="true"></i>
-                                                    <Link to='/studentsList'>Student</Link>
-                                                </li>
-                                                <li>
-                                                    <i className="fa fa-bars" aria-hidden="true"></i>
-                                                    <Link to='/GroupsList'>Group</Link>
-                                                </li>
-                                                <li>
-                                                    <i className="fa fa-bars" aria-hidden="true"></i>
-                                                    <Link to='/teacherCreate'>Add Teacher</Link>
-                                                </li>
+                                                {/* superuser menu list */}
+                                                {
+                                                    (is_superuser || superuser)
+                                                        ? (
+                                                            <>
+                                                                <li>
+                                                                    <Link to='/teachersList'> <span><GiTeacher /></span> Teachers</Link>
+                                                                </li>
+                                                                <li>                                                                
+                                                                    <Link to='/studentsList'><span><MdPersonalInjury/></span> Student</Link>
+                                                                </li>
+                                                                <li>
+                                                                    <Link to='/GroupsList'><span><GrGroup/></span> Group</Link>
+                                                                </li>
+                                                                <li>
+                                                                    <i className="fa fa-bars" aria-hidden="true"></i>
+                                                                    <Link to='/teacherCreate'>Add Teacher</Link>
+                                                                </li>
+                                                            </>
+                                                        )
+                                                        : (<></>)
+                                                }
+                                                {/* accountant menu list */}
+                                                {
+                                                    (is_accountant || accountant)
+                                                        ? (
+                                                            <>
+                                                                <li>
+                                                                    <i className="fa fa-bars" aria-hidden="true"></i>
+                                                                    <Link to='/teachersList'>Teachers</Link>
+                                                                </li>
+                                                            </>
+                                                        )
+                                                        : (<></>)
+                                                }
+                                                {/* reception menu list */}
+                                                {
+                                                    (is_reception || reception)
+                                                        ? (
+                                                            <>
+                                                                <li>
+                                                                    <Link to={'/'}>Salom</Link>
+                                                                </li>
+                                                            </>
+                                                        )
+                                                        : (<></>)
+                                                }
+                                                {
+                                                    (is_student || student)
+                                                        ? (
+                                                            <>
+
+                                                            </>
+                                                        )
+                                                        : (<></>)
+                                                }
+                                                {
+                                                    (is_teacher || teacher)
+                                                        ? (
+                                                            <>
+
+                                                            </>
+                                                        )
+                                                        : (<></>)
+                                                }
                                             </ul>
                                         </div>
                                         <div className="Saidbar-footer">
@@ -129,10 +182,10 @@ const AdminIndex = () => {
                                                 onClick={handleClick}
                                                 style={{
                                                     fontSize: '25px',
-                                        
+                                                    color: 'black'
                                                 }}
                                             >
-                                               <BsFillPersonFill/>
+                                                <BsFillPersonFill />
                                             </Button>
                                             <Menu
                                                 id="basic-menu"

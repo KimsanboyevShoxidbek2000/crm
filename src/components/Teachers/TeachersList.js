@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import './componentsStyle/CopStyle.css'
+import '../Admin/componentsStyle/CopStyle.css'
 
 import { Button } from '@mui/material';
 const TeachersList = () => {
@@ -103,9 +103,6 @@ const TeachersList = () => {
             phone: 9014787741
         },
     ]
-
-
-
     return (
         <>
             <div className='teacher-list'>

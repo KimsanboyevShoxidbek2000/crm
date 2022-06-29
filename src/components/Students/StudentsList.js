@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
     Paper,
@@ -14,9 +14,9 @@ import {
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import './componentsStyle/CopStyle.css'
-import { FiSearch} from 'react-icons/fi';
-import { bgcolor } from '@mui/system';
+import '../Admin/componentsStyle/CopStyle.css'
+import { FiSearch } from 'react-icons/fi';
+// import { bgcolor } from '@mui/system';
 
 
 // import { useGet } from '../../hooks/useGet';
@@ -44,8 +44,8 @@ const StudentsList = () => {
     const handleClose = () => setOpen(false);
     // const [data ,  setData] = useState()
     // const getDatas = useGet('posts');
-    const [userImg , setUserImg] = useState('')
-   
+    const [userImg, setUserImg] = useState('')
+
 
 
 
@@ -244,38 +244,38 @@ const StudentsList = () => {
                     aria-describedby="keep-mounted-modal-description"
                 >
                     <Box sx={style}>
-                       <label
-                       style={{
-                        position:"relative",
-                        width:'100%',
-                        height: '60px',
-                       }}
-                         htmlFor="user-img" className='userImg'>
-                          <input style={{opacity:0}} type="file" id='user-img' onChange={(e) => {
-                            const file = URL.createObjectURL(e.target.files[0])
-                            setUserImg(file)
-                          }}/>
-                          <img style={{
-                            position:'absolute',
-                            width: '90px',
-                            height: '90px',
-                            borderRadius:'50%',
-                            left: '60%',
-                            top:'10px',
-                            cursor:'pointer',
-                            }} src={`${userImg.length > 0 ? `${userImg}`:`https://cdn-icons-png.flaticon.com/512/149/149071.png` }`} alt="error" />
-                       </label>
-                       <div style={{
-                             position: 'absolute',
-                             top: '120px',
-                             textAlign:'center',
-                             width:'100%',
-                             height: '50px',
-                             background:'pink'                                                         
-                       }}>
-                         <h3>Shoxidbek</h3>
-                         <h3>Kimsanboyev</h3>
-                       </div>
+                        <label
+                            style={{
+                                position: "relative",
+                                width: '100%',
+                                height: '60px',
+                            }}
+                            htmlFor="user-img" className='userImg'>
+                            <input style={{ opacity: 0 }} type="file" id='user-img' onChange={(e) => {
+                                const file = URL.createObjectURL(e.target.files[0])
+                                setUserImg(file)
+                            }} />
+                            <img style={{
+                                position: 'absolute',
+                                width: '90px',
+                                height: '90px',
+                                borderRadius: '50%',
+                                left: '60%',
+                                top: '10px',
+                                cursor: 'pointer',
+                            }} src={`${userImg.length > 0 ? `${userImg}` : `https://cdn-icons-png.flaticon.com/512/149/149071.png`}`} alt="error" />
+                        </label>
+                        <div style={{
+                            position: 'absolute',
+                            top: '120px',
+                            textAlign: 'center',
+                            width: '100%',
+                            height: '50px',
+                            background: 'pink'
+                        }}>
+                            <h3>Shoxidbek</h3>
+                            <h3>Kimsanboyev</h3>
+                        </div>
                     </Box>
                 </Modal>
                 {/* modal section end */}
