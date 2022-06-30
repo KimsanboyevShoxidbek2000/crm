@@ -1,174 +1,158 @@
 import React, { useState } from 'react';
 
+import { Link } from 'react-router-dom';
+
+
+import {
+    Paper,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    Button
+} from '@mui/material';
+
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import { FiSearch } from 'react-icons/fi';
+
 import '../Admin/componentsStyle/CopStyle.css'
+import { useGet } from '../../hooks/useGet'
 
-import { Button } from '@mui/material';
 const TeachersList = () => {
+    const [search, setSearch] = useState(false)
+    const [getSearch, setGetSearch] = useState('');
+    const techerList = useGet('accounts/teacher-list/')
+ 
 
-    const datas = [
+    const columns = [
+        { id: '1', label: '#', minWidth: 40 },
+        { id: 'firstname', label: 'Firstname', minWidth: 150 },
         {
-            id: 1,
-            name: 'Shoxidbek',
-            surname: 'Kimsanboyev',
-            username: "kimsanShox",
-            address: 'MFY teshtosh',
-            phone: 9014787741
+            id: 'lastname',
+            label: 'Lastname',
+            align: 'left',
+            minWidth: 150
         },
         {
-            id: 2,
-            name: 'Shoxidbek',
-            surname: 'Kimsanboyev',
-            username: "kimsanShox",
-            address: 'MFY teshtosh',
-            phone: 9014787741
+            id: 'address',
+            label: 'Address',
+            align: 'left',
+            minWidth: 150
         },
         {
-            id: 3,
-            name: 'Shoxidbek',
-            surname: 'Kimsanboyev',
-            username: "kimsanShox",
-            address: 'MFY teshtosh',
-            phone: 9014787741
+            id: 'phone',
+            label: 'Phone',
+            align: 'left',
+            minWidth: 150
         },
         {
-            id: 4,
-            name: 'Shoxidbek',
-            surname: 'Kimsanboyev',
-            username: "kimsanShox",
-            address: 'MFY teshtosh',
-            phone: 9014787741
+            id: 'percent',
+            label: 'Percent',
+            align: "left",
+            minWidth: 150
         },
         {
-            id: 5,
-            name: 'Shoxidbek',
-            surname: 'Kimsanboyev',
-            username: "kimsanShox",
-            address: 'MFY teshtosh',
-            phone: 9014787741
+            id: 'salary',
+            label: 'Salary',
+            align: 'left',
+            minWidth: 150
+
         },
         {
-            id: 6,
-            name: 'Shoxidbek',
-            surname: 'Kimsanboyev',
-            username: "kimsanShox",
-            address: 'MFY teshtosh',
-            phone: 9014787741
+            id: 'action',
+            label: 'Action',
+            align: 'center',
+            minWidth: 200
         },
-        {
-            id: 7,
-            name: 'Shoxidbek',
-            surname: 'Kimsanboyev',
-            username: "kimsanShox",
-            address: 'MFY teshtosh',
-            phone: 9014787741
-        },
-        {
-            id: 8,
-            name: 'Shoxidbek',
-            surname: 'Kimsanboyev',
-            username: "kimsanShox",
-            address: 'MFY teshtosh',
-            phone: 9014787741
-        },
-        {
-            id: 9,
-            name: 'Shoxidbek',
-            surname: 'Kimsanboyev',
-            username: "kimsanShox",
-            address: 'MFY teshtosh',
-            phone: 9014787741
-        },
-        {
-            id: 10,
-            name: 'Shoxidbek',
-            surname: 'Kimsanboyev',
-            username: "kimsanShox",
-            address: 'MFY teshtosh',
-            phone: 9014787741
-        },
-        {
-            id: 11,
-            name: 'Shoxidbek',
-            surname: 'Kimsanboyev',
-            username: "kimsanShox",
-            address: 'MFY teshtosh',
-            phone: 9014787741
-        },
-        {
-            id: 12,
-            name: 'Shoxidbek',
-            surname: 'Kimsanboyev',
-            username: "kimsanShox",
-            address: 'MFY teshtosh',
-            phone: 9014787741
-        },
-    ]
+    ];
+
     return (
         <>
             <div className='teacher-list'>
-                <table className='teacher-table'>
-                    <thead>
-                        <tr>
-                            <th>
-                                #
-                            </th>
-                            <th>
-                                Name
-                            </th>
-                            <th>
-                                Surname
-                            </th>
-                            <th>
-                                Username
-                            </th>
-                            <th>
-                                Address
-                            </th>
-                            <th>
-                                Phone
-                            </th>
-                            <th>
-                                Action
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            datas && datas.map(data => {
-                                return (
-                                    <tr>
-                                      <td>
-                                        {data.id}
-                                      </td>
-                                      <td>
-                                        {data.name}
-                                      </td>
-                                      <td>
-                                        {data.surname}
-                                      </td>
-                                      <td>
-                                        {data.username}
-                                      </td>
-                                      <td>
-                                        {data.address}
-                                      </td>
-                                      <td>
-                                        {data.phone}
-                                      </td>
-                                      <td>
-                                        <Button  style={{margin: '2px'}}  variant="contained">
-                                           Edit
-                                        </Button>
-                                        <Button style={{margin: '2px'}}  variant="contained" color="error">
-                                           Delete
-                                        </Button>
-                                      </td>
-                                    </tr>
-                                )
-                            })
-                        }
-                    </tbody>
-                </table>
+                <Paper sx={{ width: '100%' }}>
+                    <div className='teacher-header'>
+                        <div className="teacher-header-left">
+                            <div>
+                                <h2 className='teacher-staff'>
+                                    Teacher Details
+                                </h2>
+                            </div>
+                            <div>
+                                <Link to='/teacherCreate' className='nav-item'><span>Add Teacher</span><i></i></Link>
+                                {/* <Link to='/teachersList' className='nav-item' ><span>Pendding Students</span><i></i></Link> */}
+                                {/* <Link to='/teachersList' className='nav-item'><span>Active Students</span><i></i></Link> */}
+                            </div>
+                        </div>
+                        <div className="teacher-header-right">
+                            <div className={`${search ? 'active' : ''}  search`}>
+                                <input value={getSearch} onChange={(e) => setGetSearch(e.target.value)} type="text" className={`input`} placeholder="Search..." />
+                                <button className="btn" onClick={() => {
+                                    setSearch(!search)
+                                }}>
+                                    <FiSearch className='search_icon' />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <TableContainer sx={{ maxHeight: "calc(80vh - 100px)" }}>
+                        <Table stickyHeader aria-label="sticky table">
+                            <TableHead>
+                                <TableRow>
+                                    {
+                                        columns.map((column) => (
+                                            <TableCell style={{ fontWeight: 'bold', minWidth: column.minWidth }} key={column.id} align={column.align}>
+                                                {column.label}
+                                            </TableCell>
+                                        ))
+                                    }
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {techerList.filter(data => data.first_name.toLowerCase().includes(getSearch.toLowerCase()))
+                                    .map((data) => {
+                                        return (
+                                            <TableRow hover role="checkbox" tabIndex={-1} key={data.id}>
+                                                <TableCell>
+                                                    {
+                                                      
+                                                    }                                                                                           
+                                                </TableCell>
+                                                <TableCell>
+                                                    {data.first_name}
+                                                </TableCell>
+                                                <TableCell>
+                                                    {data.last_name}
+                                                </TableCell>
+                                                <TableCell>
+                                                    {data.phone}
+                                                </TableCell>
+                                                <TableCell>
+                                                    {data.address}
+                                                </TableCell>
+                                                <TableCell>
+                                                    {data.percent}
+                                                </TableCell>
+                                                <TableCell>
+                                                    {data.salary}
+                                                </TableCell>
+                                                <TableCell align='center'>
+                                                    <Button style={{ margin: '2px 5px' }} variant="outlined" startIcon={<EditIcon />}>
+                                                        Edit
+                                                    </Button >
+                                                    <Button style={{ margin: '2px 5px' }} color='error' variant="outlined" startIcon={<DeleteIcon />}>
+                                                        Delete
+                                                    </Button>
+                                                </TableCell>
+                                            </TableRow>
+                                        );
+                                    })}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                </Paper>
             </div>
         </>
     )

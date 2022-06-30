@@ -19,7 +19,7 @@ import { FiSearch } from 'react-icons/fi';
 // import { bgcolor } from '@mui/system';
 
 
-// import { useGet } from '../../hooks/useGet';
+
 
 
 
@@ -43,11 +43,9 @@ const StudentsList = () => {
     const [open, setOpen] = useState(false);
     const handleClose = () => setOpen(false);
     // const [data ,  setData] = useState()
-    // const getDatas = useGet('posts');
-    const [userImg, setUserImg] = useState('')
-
-
-
+    
+    const [userImg, setUserImg] = useState('');
+   
 
 
     const datas = [
