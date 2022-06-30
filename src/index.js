@@ -2,6 +2,7 @@ import React from "react";
 import './index.css'
 import { createRoot } from "react-dom/client";
 import App from "./App";
+// import Login from "./components/login/Login";
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
@@ -11,7 +12,7 @@ const root = createRoot(container);
 root.render(
   <Provider store={store}>
     <Router>
-      <App />
+      <App/>
     </Router>
   </Provider>
 
