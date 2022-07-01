@@ -11,7 +11,7 @@ const TeacherCreate = () => {
     const [address, setAddress] = useState('')
     const [percent, setPercent] = useState('')
     const [subject, setSubject] = useState('')
-    const [image, setImage] = useState('');
+    // const [image, setImage] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault()

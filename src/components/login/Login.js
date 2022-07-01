@@ -23,6 +23,12 @@ const Login = () => {
     const [isLoading, setIsLoading] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate()
+
+
+    
+
+
+
     const handleSubmit = (e) => {
         setIsLoading(true)
         e.preventDefault();
@@ -34,33 +40,34 @@ const Login = () => {
             axios.post(`${url}accounts/login/`, data)
                 .then(res => res.data)
                 .then(token => {
-                    localStorage.setItem('token' , JSON.stringify(token.token))
+                    localStorage.setItem('token', JSON.stringify(token.token))
                     const { is_superuser, is_student, is_teacher, is_reception, is_accountant, user_id } = token
                     localStorage.setItem('data', JSON.stringify({
                         is_superuser, is_student, is_teacher, is_reception, is_accountant, user_id
                     }))
-                    if(is_superuser){
+
+                    if (is_superuser) {
                         dispatch(superuser(true))
                         navigate('/')
                     }
-                    if(is_student){
+                    if (is_student) {
                         dispatch(student(true))
                         navigate('/studentindex')
                     }
-                    if(is_accountant){
+                    if (is_accountant) {
                         dispatch(accountant(true))
                         navigate('/')
                     }
-                    if(is_reception){
+                    if (is_reception) {
                         dispatch(reception(true))
                         navigate('/receptionindex')
                     }
-                    if(is_teacher){
+                    if (is_teacher) {
                         dispatch(teacher(true))
                         navigate('/')
                     }
                     setIsLoading(false)
-                   
+
                 })
                 .catch(err => {
                     console.log(err)

@@ -20,7 +20,7 @@ const GroupCreate = () => {
 
         setLesName('')
         setTeacher('')
-        setPhone('')
+        // setPhone('')
         setPrice('')
         setFrom_time('')
         setLevel('')
@@ -86,7 +86,7 @@ const GroupCreate = () => {
                                 <label htmlFor="level" className="form__label">Level</label>
                             </div>
                         </div>
-                        <div className="col-lg-6 col-md-6 col-12 col-sm-12 page_inputs">
+                        {/* <div className="col-lg-6 col-md-6 col-12 col-sm-12 page_inputs">
                             <div className="form__group field">
                                 <input
                                     type="number"
@@ -119,7 +119,7 @@ const GroupCreate = () => {
                             <Button style={{float:'right' ,marginTop:'10px'}} type='Submit' variant="outlined" startIcon={<GroupAddIcon/>} >
                                 Add
                             </Button>
-                        </div>
+                        </div> */}
                     </div>
                 </form>
             </div>

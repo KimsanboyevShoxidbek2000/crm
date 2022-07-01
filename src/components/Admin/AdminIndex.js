@@ -14,8 +14,8 @@ import { Button, Menu, MenuItem } from "@mui/material";
 import { BsFillPersonFill } from 'react-icons/bs'
 import { RiBarChartHorizontalLine } from 'react-icons/ri';
 import { GiTeacher } from 'react-icons/gi'
-import {MdPersonalInjury} from 'react-icons/md'
-import {GrGroup} from 'react-icons/gr'
+import { MdPersonalInjury } from 'react-icons/md'
+import { GrGroup } from 'react-icons/gr'
 // pages
 import HomeAdmin from "./HomeAdmin";
 import Accountant from "../accountant/Accountant";
@@ -38,6 +38,10 @@ const AdminIndex = () => {
     let data = JSON.parse(localStorage.getItem('data'));
     const { is_accountant, is_reception, is_student, is_superuser, is_teacher } = data;
     const [menu, setMenu] = useState(false);
+
+   console.log(data);
+
+    // console.log(data);
     // const getData = useGet('posts');
     // console.log(getData);
     // logout function start
@@ -49,8 +53,6 @@ const AdminIndex = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
-    
-    // logout function end
 
     return (
         <>
@@ -85,11 +87,11 @@ const AdminIndex = () => {
                                                                 <li>
                                                                     <Link to='/teachersList'> <span><GiTeacher /></span> Teachers</Link>
                                                                 </li>
-                                                                <li>                                                                
-                                                                    <Link to='/studentsList'><span><MdPersonalInjury/></span> Student</Link>
+                                                                <li>
+                                                                    <Link to='/studentsList'><span><MdPersonalInjury /></span> Student</Link>
                                                                 </li>
                                                                 <li>
-                                                                    <Link to='/GroupsList'><span><GrGroup/></span> Group</Link>
+                                                                    <Link to='/GroupsList'><span><GrGroup /></span> Group</Link>
                                                                 </li>
                                                                 <li>
                                                                     <i className="fa fa-bars" aria-hidden="true"></i>
@@ -281,7 +283,9 @@ const AdminIndex = () => {
                         {/* error routes */}
                         {
                             ((superuser || is_superuser) || (reception || is_reception) || (student || is_student) || (teacher || is_teacher) || (accountant || is_accountant))
-                                ? (<></>)
+                                ? (<>
+                                   
+                                </>)
                                 : (
                                     <>
                                         <Routes>
