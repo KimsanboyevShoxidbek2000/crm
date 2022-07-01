@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import BrandImg from '../../assets/images/geekzone.png'
 import "../AppStyle/AppStyle.css";
 
@@ -35,15 +35,18 @@ const AdminIndex = () => {
     const dispatch = useDispatch();
     const auth = useSelector(state => state);
     const { superuser, student, accountant, teacher, reception } = auth.auth;
-    let data = JSON.parse(localStorage.getItem('data'));
-    const { is_accountant, is_reception, is_student, is_superuser, is_teacher } = data;
+
+
     const [menu, setMenu] = useState(false);
+    const [response , setResponse] = useState({
+        is_superuser: false,
+        is_student: false,
+        is_teacher: false,
+        is_accountant: false,
+        is_reception: false
+    })
 
-   console.log(data);
 
-    // console.log(data);
-    // const getData = useGet('posts');
-    // console.log(getData);
     // logout function start
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -54,12 +57,41 @@ const AdminIndex = () => {
         setAnchorEl(null);
     };
 
+    useEffect(() => {
+        const data = window.localStorage.getItem('data')
+        if (data){
+            const {
+                is_superuser,
+                is_student,
+                is_teacher,
+                is_accountant,
+                is_reception
+            } = JSON.parse(data)
+            setResponse(
+                {is_superuser,
+                is_student,
+                is_teacher,
+                is_accountant,
+                is_reception})
+        }
+        else {
+            setResponse({
+                    is_superuser: false,
+                    is_student: false,
+                    is_teacher: false,
+                    is_accountant: false,
+                    is_reception: false
+                }
+            )
+        }
+    } , [])
+
+
     return (
         <>
-
             <div className="app">
                 {
-                    ((superuser || is_superuser) || (reception || is_reception) || (student || is_student) || (teacher || is_teacher) || (accountant || is_accountant))
+                    ((superuser || response.is_superuser) || (reception || response.is_reception) || (student || response.is_student) || (teacher || response.is_teacher) || (accountant || response.is_accountant))
                         ? (
                             <>
                                 <div className={`${menu ? "active" : ""} app-left`} onMouseEnter={() => {
@@ -81,7 +113,7 @@ const AdminIndex = () => {
                                             <ul>
                                                 {/* superuser menu list */}
                                                 {
-                                                    (is_superuser || superuser)
+                                                    (response.is_superuser || superuser)
                                                         ? (
                                                             <>
                                                                 <li>
@@ -94,7 +126,7 @@ const AdminIndex = () => {
                                                                     <Link to='/GroupsList'><span><GrGroup /></span> Group</Link>
                                                                 </li>
                                                                 <li>
-                                                                    <i className="fa fa-bars" aria-hidden="true"></i>
+
                                                                     <Link to='/teacherCreate'>Add Teacher</Link>
                                                                 </li>
                                                             </>
@@ -103,11 +135,10 @@ const AdminIndex = () => {
                                                 }
                                                 {/* accountant menu list */}
                                                 {
-                                                    (is_accountant || accountant)
+                                                    (response.is_accountant || accountant)
                                                         ? (
                                                             <>
                                                                 <li>
-                                                                    <i className="fa fa-bars" aria-hidden="true"></i>
                                                                     <Link to='/teachersList'>Teachers</Link>
                                                                 </li>
                                                             </>
@@ -116,7 +147,7 @@ const AdminIndex = () => {
                                                 }
                                                 {/* reception menu list */}
                                                 {
-                                                    (is_reception || reception)
+                                                    (response.is_reception || reception)
                                                         ? (
                                                             <>
                                                                 <li>
@@ -127,7 +158,7 @@ const AdminIndex = () => {
                                                         : (<></>)
                                                 }
                                                 {
-                                                    (is_student || student)
+                                                    (response.is_student || student)
                                                         ? (
                                                             <>
 
@@ -136,7 +167,7 @@ const AdminIndex = () => {
                                                         : (<></>)
                                                 }
                                                 {
-                                                    (is_teacher || teacher)
+                                                    (response.is_teacher || teacher)
                                                         ? (
                                                             <>
 
@@ -157,13 +188,13 @@ const AdminIndex = () => {
                 <div
                     className={`${menu ? 'app-right-active' : ''} app-right`}
                     style={
-                        ((superuser || is_superuser) || (reception || is_reception) || (student || is_student) || (teacher || is_teacher) || (accountant || is_accountant))
+                        ((superuser || response.is_superuser) || (reception || response.is_reception) || (student || response.is_student) || (teacher || response.is_teacher) || (accountant || response.is_accountant))
                             ? { width: '100%' }
                             : { width: '100%' }
                     }
                 >
                     {
-                        ((superuser || is_superuser) || (reception || is_reception) || (student || is_student) || (teacher || is_teacher) || (accountant || is_accountant))
+                        ((superuser || response.is_superuser) || (reception || response.is_reception) || (student || response.is_student) || (teacher || response.is_teacher) || (accountant || response.is_accountant))
                             ?
                             (
                                 <>
@@ -225,7 +256,7 @@ const AdminIndex = () => {
                     <div className="app-right-container">
                         {/* superuser routes */}
                         {
-                            (superuser || is_superuser)
+                            (superuser || response.is_superuser)
                                 ? (
                                     <>
                                         <Routes>
@@ -241,7 +272,7 @@ const AdminIndex = () => {
                         }
                         {/* accountant routes */}
                         {
-                            (accountant || is_accountant)
+                            (accountant || response.is_accountant)
                                 ? (
                                     <>
                                         <Routes>
@@ -253,7 +284,7 @@ const AdminIndex = () => {
                         }
                         {/* teacher routes */}
                         {
-                            (teacher || is_teacher)
+                            (teacher || response.is_teacher)
                                 ? (
                                     <>
                                         <Routes>
@@ -268,7 +299,7 @@ const AdminIndex = () => {
                         }
                         {/* reception routes */}
                         {
-                            (reception || is_reception)
+                            (reception || response.is_reception)
                                 ? (
                                     <>
                                         <Routes>
@@ -282,7 +313,7 @@ const AdminIndex = () => {
                         }
                         {/* error routes */}
                         {
-                            ((superuser || is_superuser) || (reception || is_reception) || (student || is_student) || (teacher || is_teacher) || (accountant || is_accountant))
+                            ((superuser || response.is_superuser) || (reception || response.is_reception) || (student || response.is_student) || (teacher || response.is_teacher) || (accountant || response.is_accountant))
                                 ? (<>
                                    
                                 </>)
