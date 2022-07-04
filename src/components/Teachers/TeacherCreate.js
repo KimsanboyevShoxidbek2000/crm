@@ -17,7 +17,6 @@ const TeacherCreate = () => {
         e.preventDefault()
         console.log(firstName, lastName, phone, address ,subject , percent);
 
-
         setFirstName('')
         setLastName('')
         setPhone('')
