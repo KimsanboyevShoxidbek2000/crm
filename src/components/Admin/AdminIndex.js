@@ -14,8 +14,9 @@ import { Button, Menu, MenuItem } from "@mui/material";
 import { BsFillPersonFill } from 'react-icons/bs'
 import { RiBarChartHorizontalLine } from 'react-icons/ri';
 import { GiTeacher } from 'react-icons/gi'
-import { MdPersonalInjury } from 'react-icons/md'
-import { GrGroup } from 'react-icons/gr'
+
+import { MdPersonalInjury , MdGroups } from 'react-icons/md'
+
 
 // pages
 import HomeAdmin from "./HomeAdmin";
@@ -107,7 +108,7 @@ const AdminIndex = () => {
                                     <div className="Sadibar">
                                         <div className="Sadibar-header">
                                             <Link to={'/'}>
-                                                <h2 className="brand-title"> <img src={BrandImg} alt="Brand" /> GeekZone</h2>
+                                                <h2 className="brand-title"> <img src={BrandImg} alt="Brand" /> </h2>
                                             </Link>
                                         </div>
                                         <div className="Sadibar-body">
@@ -118,18 +119,16 @@ const AdminIndex = () => {
                                                         ? (
                                                             <>
                                                                 <li>
-                                                                    <Link to='/teachersList'> <span><GiTeacher /></span> Teachers</Link>
+                                                                    <Link to='/teachersList'> <span><GiTeacher /></span>  <span className="none"> Teachers</span></Link>
                                                                 </li>
                                                                 <li>
-                                                                    <Link to='/studentsList'><span><MdPersonalInjury /></span> Student</Link>
+                                                                    <Link to='/studentsList'><span><MdPersonalInjury /></span> <span className="none">Student</span></Link>
                                                                 </li>
                                                                 <li>
-                                                                    <Link to='/GroupsList'><span><GrGroup /></span> Group</Link>
+                                                                    <Link to='/GroupsList'><span ><MdGroups/></span> <span className="none">Group</span></Link>
                                                                 </li>
-                                                                <li>
-
-                                                                    <Link to='/teacherCreate'>Add Teacher</Link>
-                                                                </li>
+                                                                                                                               
+                                                            
                                                             </>
                                                         )
                                                         : (<></>)
@@ -217,7 +216,7 @@ const AdminIndex = () => {
                                                 onClick={handleClick}
                                                 style={{
                                                     fontSize: '25px',
-                                                    color: 'black'
+                                                    color: '#1C3156'
                                                 }}
                                             >
                                                 <BsFillPersonFill />
@@ -326,6 +325,9 @@ const AdminIndex = () => {
                                     </>
                                 )
                         }
+                    </div>
+                    <div className="footer">
+                        <h3>Copyright © 2022 GeekZone.  All rights reserved.</h3> 
                     </div>
                 </div>
             </div>

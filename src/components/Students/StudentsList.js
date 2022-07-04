@@ -277,7 +277,7 @@ const StudentsList = () => {
                     </Box>
                 </Modal>
                 {/* modal section end */}
-                <Paper sx={{ width: '100%' }}>
+                <Paper sx={{ width: '100%' }} style={{borderRadius: '15px 15px 0 15px'}}>
                     <div className='student-header'>
                         <div className="student-header-left">
                             <div>
@@ -302,7 +302,7 @@ const StudentsList = () => {
                             </div>
                         </div>
                     </div>
-                    <TableContainer sx={{ maxHeight: "calc(80vh - 100px)" }}>
+                    <TableContainer sx={{ maxHeight: "calc(86vh - 160px)" , minHeight:'calc(86vh - 160px)' }}>
                         <Table stickyHeader aria-label="sticky table">
                             <TableHead>
                                 <TableRow>

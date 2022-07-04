@@ -72,7 +72,7 @@ const TeachersList = () => {
     return (
         <>
             <div className='teacher-list'>
-                <Paper sx={{ width: '100%' }}>
+                <Paper sx={{ width: '100%' }} style={{borderRadius: '15px 15px 0 15px'}}>
                     <div className='teacher-header'>
                         <div className="teacher-header-left">
                             <div>
@@ -97,7 +97,7 @@ const TeachersList = () => {
                             </div>
                         </div>
                     </div>
-                    <TableContainer sx={{ maxHeight: "calc(80vh - 100px)" }}>
+                    <TableContainer sx={{ maxHeight: "calc(86vh - 160px)" , minHeight:'calc(86vh - 160px)' }}>
                         <Table stickyHeader aria-label="sticky table">
                             <TableHead>
                                 <TableRow>
