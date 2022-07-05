@@ -19,7 +19,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { FiSearch } from 'react-icons/fi';
 
 import '../Admin/componentsStyle/CopStyle.css'
-import { useGet } from '../../hooks/useGet'
+import { useGet } from '../../redux/hooks/useGet';
 
 const TeachersList = () => {
     const [search, setSearch] = useState(false)

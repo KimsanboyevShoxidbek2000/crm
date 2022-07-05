@@ -1,5 +1,7 @@
 import React, { useState, } from 'react';
 
+import Vectorimg from '../../assets/images/Vectors.png'
+
 import {
     FormControl,
     InputLabel,
@@ -11,6 +13,7 @@ import {
 import { HiOutlineEyeOff, HiOutlineEye } from 'react-icons/hi';
 
 import '../../Style/LoginStyle/LoginStyle.css';
+
 import axios from "axios";
 import { useDispatch } from 'react-redux'
 import { teacher, superuser, student, reception, accountant } from '../../redux/auth';
@@ -21,11 +24,14 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [eye, setEye] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [userError, setUserError] = useState(false)
+    const [passError, setPassError] = useState(false)
+
     const dispatch = useDispatch();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
+   
 
-    
 
 
 
@@ -75,14 +81,18 @@ const Login = () => {
                 })
             setUsername('');
             setPassword('');
+            setPassError(false)
+            setUserError(false)
         } else {
-            alert('username or password kiriting!')
+            setPassError(true)
+            setUserError(true)
             setIsLoading(false)
         }
     }
     return (
-        <div>
+        <div className='lot'>
             <div className='big-login'>
+
                 <div className="container login">
                     <div className="row">
                         <div className="col-12 login-header">
@@ -96,7 +106,7 @@ const Login = () => {
                         <div className="col-lg-4 col-md-6 col-sm-6 col-12 login-card">
                             <form onSubmit={handleSubmit}>
                                 <FormControl variant="outlined">
-                                    <InputLabel htmlFor='outlined-adornment-username'>Username</InputLabel>
+                                    <InputLabel htmlFor='outlined-adornment-username' style={{ color: 'white' }}>Username</InputLabel>
                                     <OutlinedInput
                                         id='outlined-adornment-username'
                                         type='text'
@@ -104,39 +114,53 @@ const Login = () => {
                                         name='username'
                                         onChange={(e) => setUsername(e.target.value)}
                                         label="Username"
+                                        style={{ color: 'white', backgroundColor: "#224957" }}
                                     />
+                                    {
+                                        userError ? (<span style={{ color: 'red', marginTop: '0.5vh', letterSpacing: '1.5px' }}>Username kiriting!</span>) : (<></>)
+                                    }
                                 </FormControl>
                                 <FormControl variant="outlined">
-                                    <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                                    <InputLabel htmlFor="outlined-adornment-password" style={{ color: 'white' }}>Password</InputLabel>
                                     <OutlinedInput
                                         id="outlined-adornment-password"
                                         type={eye ? 'text' : 'password'}
                                         value={password}
                                         name='password'
+                                        style={{ color: 'white', backgroundColor: "#224957" }}
                                         onChange={(e) => setPassword(e.target.value)}
                                         endAdornment={<InputAdornment position="end">
                                             <IconButton
                                                 aria-label="toggle password visibility"
                                                 onClick={() => setEye(!eye)}
                                                 edge="end"
+                                                style={{ color: 'white' }}
                                             >
                                                 {eye ? <HiOutlineEyeOff /> : <HiOutlineEye />}
                                             </IconButton>
                                         </InputAdornment>}
                                         label="Password"
                                     />
-                                </FormControl>
-                                <button type='submit' className='btn-login' disabled={isLoading ? true : false}>
                                     {
-                                        isLoading ? <CircularProgress className='loader' color="success" /> : 'SIGN IN'
+                                        passError ? (<span style={{ color: 'red', marginTop: '0.5vh', letterSpacing: '1.5px' }}>Password kiriting!</span>) : (<></>)
+                                    }
+                                </FormControl>
+                                <button style={{ color: 'white', border: '1px solid #20DF7F' }} type='submit' className='btn-login' disabled={isLoading ? true : false}>
+                                    {
+                                        isLoading ? <CircularProgress className='loader' style={{ color: 'white' }} /> : 'SIGN IN'
                                     }
                                 </button>
                             </form>
                         </div>
+
                     </div>
                 </div>
             </div>
+            <div className="vectors">
+                <img src={Vectorimg} alt="" />
+            </div>
         </div>)
+
 }
 
 export default Login

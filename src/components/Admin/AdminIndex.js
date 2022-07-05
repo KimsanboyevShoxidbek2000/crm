@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import BrandImg from '../../assets/images/geekzone.png'
 import "../AppStyle/AppStyle.css";
 
@@ -15,7 +15,7 @@ import { BsFillPersonFill } from 'react-icons/bs'
 import { RiBarChartHorizontalLine } from 'react-icons/ri';
 import { GiTeacher } from 'react-icons/gi'
 
-import { MdPersonalInjury , MdGroups } from 'react-icons/md'
+import { MdPersonalInjury, MdGroups } from 'react-icons/md'
 
 
 // pages
@@ -40,7 +40,7 @@ const AdminIndex = () => {
 
 
     const [menu, setMenu] = useState(false);
-    const [response , setResponse] = useState({
+    const [response, setResponse] = useState({
         is_superuser: false,
         is_student: false,
         is_teacher: false,
@@ -61,7 +61,7 @@ const AdminIndex = () => {
 
     useEffect(() => {
         const data = window.localStorage.getItem('data')
-        if (data){
+        if (data) {
             const {
                 is_superuser,
                 is_student,
@@ -70,23 +70,25 @@ const AdminIndex = () => {
                 is_reception
             } = JSON.parse(data)
             setResponse(
-                {is_superuser,
-                is_student,
-                is_teacher,
-                is_accountant,
-                is_reception})
+                {
+                    is_superuser,
+                    is_student,
+                    is_teacher,
+                    is_accountant,
+                    is_reception
+                })
         }
         else {
             setResponse({
-                    is_superuser: false,
-                    is_student: false,
-                    is_teacher: false,
-                    is_accountant: false,
-                    is_reception: false
-                }
+                is_superuser: false,
+                is_student: false,
+                is_teacher: false,
+                is_accountant: false,
+                is_reception: false
+            }
             )
         }
-    } , [])
+    }, [])
 
 
     return (
@@ -125,10 +127,10 @@ const AdminIndex = () => {
                                                                     <Link to='/studentsList'><span><MdPersonalInjury /></span> <span className="none">Student</span></Link>
                                                                 </li>
                                                                 <li>
-                                                                    <Link to='/GroupsList'><span ><MdGroups/></span> <span className="none">Group</span></Link>
+                                                                    <Link to='/GroupsList'><span ><MdGroups /></span> <span className="none">Group</span></Link>
                                                                 </li>
-                                                                                                                               
-                                                            
+
+
                                                             </>
                                                         )
                                                         : (<></>)
@@ -189,7 +191,7 @@ const AdminIndex = () => {
                     className={`${menu ? 'app-right-active' : ''} app-right`}
                     style={
                         ((superuser || response.is_superuser) || (reception || response.is_reception) || (student || response.is_student) || (teacher || response.is_teacher) || (accountant || response.is_accountant))
-                            ? { width: '100%' }
+                            ? { width: '100%' , paddingLeft: '1%' , paddingRight: '1%' , paddingTop: '1vh'}
                             : { width: '100%' }
                     }
                 >
@@ -315,7 +317,7 @@ const AdminIndex = () => {
                         {
                             ((superuser || response.is_superuser) || (reception || response.is_reception) || (student || response.is_student) || (teacher || response.is_teacher) || (accountant || response.is_accountant))
                                 ? (<>
-                                   
+
                                 </>)
                                 : (
                                     <>
@@ -326,9 +328,17 @@ const AdminIndex = () => {
                                 )
                         }
                     </div>
-                    <div className="footer">
-                        <h3>Copyright © 2022 GeekZone.  All rights reserved.</h3> 
-                    </div>
+
+                    {
+                        ((superuser || response.is_superuser) || (reception || response.is_reception) || (student || response.is_student) || (teacher || response.is_teacher) || (accountant || response.is_accountant))
+                            ? (<>
+                                <div className="footer">
+                                    <h3>Copyright © 2022 GeekZone.  All rights reserved.</h3>
+                                </div>
+                            </>)
+                            : (<></>)
+                    }
+
                 </div>
             </div>
         </>
