@@ -12,7 +12,7 @@ import { Button, Menu, MenuItem } from "@mui/material";
 
 // icons
 import { BsFillPersonFill } from 'react-icons/bs'
-import { RiBarChartHorizontalLine } from 'react-icons/ri';
+import { RiBarChartHorizontalLine , RiUserReceived2Fill} from 'react-icons/ri';
 import { GiTeacher } from 'react-icons/gi'
 
 import { MdPersonalInjury, MdGroups } from 'react-icons/md'
@@ -28,6 +28,7 @@ import StudentList from "../Students/StudentsList";
 import TeachersList from "../Teachers/TeachersList";
 import GroupsList from "../../core/GroupsList";
 import TeacherCreate from "../Teachers/TeacherCreate";
+import ReceptionList from "../Reception/ReceptionList";
 
 
 
@@ -128,6 +129,9 @@ const AdminIndex = () => {
                                                                 </li>
                                                                 <li>
                                                                     <Link to='/GroupsList'><span ><MdGroups /></span> <span className="none">Group</span></Link>
+                                                                </li>
+                                                                <li>
+                                                                    <Link to='/receptionList'><span ><RiUserReceived2Fill /></span> <span className="none">Receptions</span></Link>
                                                                 </li>
 
 
@@ -267,6 +271,7 @@ const AdminIndex = () => {
                                             <Route path='teachersList' element={<TeachersList />} />
                                             <Route path='GroupsList' element={<GroupsList />} />
                                             <Route path='teacherCreate' element={<TeacherCreate />} />
+                                            <Route path='receptionList' element={<ReceptionList />} />
                                         </Routes>
                                     </>
                                 )

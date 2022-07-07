@@ -12,7 +12,7 @@ const usePut = (url , payload) => {
             setRes(data)
         }
         put_fun()
-    } , [])
+    } , [url, payload])
   return res
 }
 

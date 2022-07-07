@@ -16,8 +16,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import '../Admin/componentsStyle/CopStyle.css'
 import { FiSearch } from 'react-icons/fi';
-
-
+import { useGet } from '../../hooks/useGet';
 
 
 
@@ -42,147 +41,147 @@ const StudentsList = () => {
     const [getSearch, setGetSearch] = useState('');
     const [open, setOpen] = useState(false);
     const handleClose = () => setOpen(false);
-    // const [data ,  setData] = useState()
+    const datas = useGet('accounts/student-list/')
     
     const [userImg, setUserImg] = useState('');
    
 
 
-    const datas = [
-        {
-            id: 1,
-            name: 'sadasdasd',
-            surname: 'Kimsanboyev',
-            username: "kimsanShox",
-            address: 'MFY teshtosh',
-            phone: 9014787741,
-            parent_phone: 1123546646454,
-            image: 'hello',
-            group: "B2"
-        },
-        {
-            id: 2,
-            name: 'asdassdad',
-            surname: 'Kimsanboyev',
-            username: "kimsanShox",
-            address: 'MFY teshtosh',
-            phone: 9014787741,
-            parent_phone: 1123546646454,
-            image: 'hello',
-            group: "B2"
-        },
-        {
-            id: 3,
-            name: 'grfgfg',
-            surname: 'Kimsanboyev',
-            username: "kimsanShox",
-            address: 'MFY teshtosh',
-            phone: 9014787741,
-            parent_phone: 1123546646454,
-            image: 'hello',
-            group: "B2"
-        },
-        {
-            id: 4,
-            name: 'dfgdgdfgd',
-            surname: 'Kimsanboyev',
-            username: "kimsanShox",
-            address: 'MFY teshtosh',
-            phone: 9014787741,
-            parent_phone: 1123546646454,
-            image: 'hello',
-            group: "B2",
+    // const datas = [
+    //     {
+    //         id: 1,
+    //         name: 'sadasdasd',
+    //         surname: 'Kimsanboyev',
+    //         username: "kimsanShox",
+    //         address: 'MFY teshtosh',
+    //         phone: 9014787741,
+    //         parent_phone: 1123546646454,
+    //         image: 'hello',
+    //         group: "B2"
+    //     },
+    //     {
+    //         id: 2,
+    //         name: 'asdassdad',
+    //         surname: 'Kimsanboyev',
+    //         username: "kimsanShox",
+    //         address: 'MFY teshtosh',
+    //         phone: 9014787741,
+    //         parent_phone: 1123546646454,
+    //         image: 'hello',
+    //         group: "B2"
+    //     },
+    //     {
+    //         id: 3,
+    //         name: 'grfgfg',
+    //         surname: 'Kimsanboyev',
+    //         username: "kimsanShox",
+    //         address: 'MFY teshtosh',
+    //         phone: 9014787741,
+    //         parent_phone: 1123546646454,
+    //         image: 'hello',
+    //         group: "B2"
+    //     },
+    //     {
+    //         id: 4,
+    //         name: 'dfgdgdfgd',
+    //         surname: 'Kimsanboyev',
+    //         username: "kimsanShox",
+    //         address: 'MFY teshtosh',
+    //         phone: 9014787741,
+    //         parent_phone: 1123546646454,
+    //         image: 'hello',
+    //         group: "B2",
 
-        },
-        {
-            id: 5,
-            name: 'fdggdgdf',
-            surname: 'Kimsanboyev',
-            username: "kimsanShox",
-            address: 'MFY teshtosh',
-            phone: 9014787741,
-            parent_phone: 1123546646454,
-            image: 'hello',
-            group: "B2"
-        },
-        {
-            id: 6,
-            name: 'yytjtyjy',
-            surname: 'Kimsanboyev',
-            username: "kimsanShox",
-            address: 'MFY teshtosh',
-            phone: 9014787741,
-            parent_phone: 1123546646454,
-            image: 'hello',
-            group: "B2"
-        },
-        {
-            id: 7,
-            name: 'tyjtyjtyjt',
-            surname: 'Kimsanboyev',
-            username: "kimsanShox",
-            address: 'MFY teshtosh',
-            phone: 9014787741,
-            parent_phone: 1123546646454,
-            image: 'hello',
-            group: "B2"
-        },
-        {
-            id: 8,
-            name: 'tyjttr',
-            surname: 'Kimsanboyev',
-            username: "kimsanShox",
-            address: 'MFY teshtosh',
-            phone: 9014787741,
-            parent_phone: 1123546646454,
-            image: 'hello',
-            group: "B2"
-        },
-        {
-            id: 9,
-            name: 'jjhghjghj',
-            surname: 'Kimsanboyev',
-            username: "kimsanShox",
-            address: 'MFY teshtosh',
-            phone: 9014787741,
-            parent_phone: 1123546646454,
-            image: 'hello',
-            group: "B2"
-        },
-        {
-            id: 10,
-            name: 'hgjhgjhgj',
-            surname: 'Kimsanboyev',
-            username: "kimsanShox",
-            address: 'MFY teshtosh',
-            phone: 9014787741,
-            parent_phone: 1123546646454,
-            image: 'hello',
-            group: "B2"
-        },
-        {
-            id: 11,
-            name: 'hgjghjh',
-            surname: 'Kimsanboyev',
-            username: "kimsanShox",
-            address: 'MFY teshtosh',
-            phone: 9014787741,
-            parent_phone: 1123546646454,
-            image: 'hello',
-            group: "B2"
-        },
-        {
-            id: 12,
-            name: 'Shoxidbek',
-            surname: 'Kimsanboyev',
-            username: "kimsanShox",
-            address: 'MFY teshtosh',
-            phone: 9014787741,
-            parent_phone: 1123546646454,
-            image: 'hello',
-            group: "B2"
-        },
-    ]
+    //     },
+    //     {
+    //         id: 5,
+    //         name: 'fdggdgdf',
+    //         surname: 'Kimsanboyev',
+    //         username: "kimsanShox",
+    //         address: 'MFY teshtosh',
+    //         phone: 9014787741,
+    //         parent_phone: 1123546646454,
+    //         image: 'hello',
+    //         group: "B2"
+    //     },
+    //     {
+    //         id: 6,
+    //         name: 'yytjtyjy',
+    //         surname: 'Kimsanboyev',
+    //         username: "kimsanShox",
+    //         address: 'MFY teshtosh',
+    //         phone: 9014787741,
+    //         parent_phone: 1123546646454,
+    //         image: 'hello',
+    //         group: "B2"
+    //     },
+    //     {
+    //         id: 7,
+    //         name: 'tyjtyjtyjt',
+    //         surname: 'Kimsanboyev',
+    //         username: "kimsanShox",
+    //         address: 'MFY teshtosh',
+    //         phone: 9014787741,
+    //         parent_phone: 1123546646454,
+    //         image: 'hello',
+    //         group: "B2"
+    //     },
+    //     {
+    //         id: 8,
+    //         name: 'tyjttr',
+    //         surname: 'Kimsanboyev',
+    //         username: "kimsanShox",
+    //         address: 'MFY teshtosh',
+    //         phone: 9014787741,
+    //         parent_phone: 1123546646454,
+    //         image: 'hello',
+    //         group: "B2"
+    //     },
+    //     {
+    //         id: 9,
+    //         name: 'jjhghjghj',
+    //         surname: 'Kimsanboyev',
+    //         username: "kimsanShox",
+    //         address: 'MFY teshtosh',
+    //         phone: 9014787741,
+    //         parent_phone: 1123546646454,
+    //         image: 'hello',
+    //         group: "B2"
+    //     },
+    //     {
+    //         id: 10,
+    //         name: 'hgjhgjhgj',
+    //         surname: 'Kimsanboyev',
+    //         username: "kimsanShox",
+    //         address: 'MFY teshtosh',
+    //         phone: 9014787741,
+    //         parent_phone: 1123546646454,
+    //         image: 'hello',
+    //         group: "B2"
+    //     },
+    //     {
+    //         id: 11,
+    //         name: 'hgjghjh',
+    //         surname: 'Kimsanboyev',
+    //         username: "kimsanShox",
+    //         address: 'MFY teshtosh',
+    //         phone: 9014787741,
+    //         parent_phone: 1123546646454,
+    //         image: 'hello',
+    //         group: "B2"
+    //     },
+    //     {
+    //         id: 12,
+    //         name: 'Shoxidbek',
+    //         surname: 'Kimsanboyev',
+    //         username: "kimsanShox",
+    //         address: 'MFY teshtosh',
+    //         phone: 9014787741,
+    //         parent_phone: 1123546646454,
+    //         image: 'hello',
+    //         group: "B2"
+    //     },
+    // ]
     const columns = [
         { id: '1', label: '#', minWidth: 40 },
         { id: 'name', label: 'Name', minWidth: 150 },
@@ -316,7 +315,7 @@ const StudentsList = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {datas.filter(data => data.name.toLowerCase().includes(getSearch.toLowerCase()))
+                                {datas.filter(data => data.first_name.toLowerCase().includes(getSearch.toLowerCase()))
                                     .map((data) => {
                                         return (
                                             <TableRow hover role="checkbox" tabIndex={-1} key={data.id}>
@@ -324,10 +323,10 @@ const StudentsList = () => {
                                                     {data.id}
                                                 </TableCell>
                                                 <TableCell>
-                                                    {data.name}
+                                                    {data.first_name}
                                                 </TableCell>
                                                 <TableCell>
-                                                    {data.surname}
+                                                    {data.last_name}
                                                 </TableCell>
                                                 <TableCell>
                                                     {data.address}

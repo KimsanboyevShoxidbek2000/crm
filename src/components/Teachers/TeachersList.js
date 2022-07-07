@@ -19,13 +19,15 @@ import EditIcon from '@mui/icons-material/Edit';
 import { FiSearch } from 'react-icons/fi';
 
 import '../Admin/componentsStyle/CopStyle.css'
-import { useGet } from '../../redux/hooks/useGet';
+import {useGet} from '../../hooks/useGet'
 
 const TeachersList = () => {
     const [search, setSearch] = useState(false)
     const [getSearch, setGetSearch] = useState('');
+    const [userId , setUserId] = useState(null)
+    const editUser = useGet(`accounts/teacher-list/${userId}`)
     const techerList = useGet('accounts/teacher-list/')
- 
+    console.log(editUser);
 
     const columns = [
         { id: '1', label: '#', minWidth: 40 },
@@ -139,7 +141,9 @@ const TeachersList = () => {
                                                     {data.salary}
                                                 </TableCell>
                                                 <TableCell align='center'>
-                                                    <Button style={{ margin: '2px 5px' }} variant="outlined" startIcon={<EditIcon />}>
+                                                    <Button  style={{ margin: '2px 5px' }} variant="outlined" startIcon={<EditIcon />} onClick={() => {
+                                                        setUserId(data.id)
+                                                    }} >
                                                         Edit
                                                     </Button >
                                                     <Button style={{ margin: '2px 5px' }} color='error' variant="outlined" startIcon={<DeleteIcon />}>
