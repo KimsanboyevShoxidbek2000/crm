@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useRef} from 'react';
 import { Link } from 'react-router-dom';
 import {
     Paper,
@@ -42,7 +42,7 @@ const StudentsList = () => {
     const [open, setOpen] = useState(false);
     const handleClose = () => setOpen(false);
     const datas = useGet('accounts/student-list/')
-    
+    const autoFocus = useRef()
     const [userImg, setUserImg] = useState('');
    
 
@@ -292,9 +292,10 @@ const StudentsList = () => {
                         </div>
                         <div className="student-header-right">
                             <div className={`${search ? 'active' : ''}  search`}>
-                                <input value={getSearch} onChange={(e) => setGetSearch(e.target.value)} type="text" className={`input`} placeholder="Search..." />
+                                <input ref={autoFocus} value={getSearch} onChange={(e) => setGetSearch(e.target.value)} type="text" className={`input`} placeholder="Search..." />
                                 <button className="btn" onClick={() => {
                                     setSearch(!search)
+                                    autoFocus.current.focus()
                                 }}>
                                     <FiSearch className='search_icon' />
                                 </button>

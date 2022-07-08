@@ -60,6 +60,10 @@
   color: white;
 }
 
+.big-login .login .row .login-card form .btn-login:focus {
+  outline: none;
+}
+
 .vectors {
   width: 100%;
   position: absolute;

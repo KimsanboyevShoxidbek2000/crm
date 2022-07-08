@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useRef } from 'react';
 
 import { Link } from 'react-router-dom';
 
@@ -25,7 +25,7 @@ const TeachersList = () => {
     const [search, setSearch] = useState(false)
     const [getSearch, setGetSearch] = useState('');
     const [userId, setUserId] = useState(null)
- 
+    const autoFocus = useRef()
     const techerList = useGet('accounts/teacher-list/')
 
     
@@ -90,9 +90,10 @@ const TeachersList = () => {
                         </div>
                         <div className="teacher-header-right">
                             <div className={`${search ? 'active' : ''}  search`}>
-                                <input value={getSearch} onChange={(e) => setGetSearch(e.target.value)} type="text" className={`input`} placeholder="Search..." />
+                                <input ref={autoFocus} value={getSearch} onChange={(e) => setGetSearch(e.target.value)} type="text" className={`input`} placeholder="Search..." />
                                 <button className="btn" onClick={() => {
                                     setSearch(!search)
+                                    autoFocus.current.focus()
                                 }}>
                                     <FiSearch className='search_icon' />
                                 </button>
