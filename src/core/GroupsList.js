@@ -78,7 +78,7 @@ const Group = () => {
                             </h2>
                         </div>
                         <div>
-                            <Link to='/studentsList' className='nav-item'><span>Add Group</span><i></i></Link>
+                            <Link to='/groupCreate' className='nav-item'><span>Add Group</span><i></i></Link>
                             <Link to='/studentsList' className='nav-item' ><span>Pendding Groups</span><i></i></Link>
                             <Link to='/studentsList' className='nav-item'><span>Active Groups</span><i></i></Link>
                         </div>
@@ -139,7 +139,7 @@ const Group = () => {
                                             <TableCell align='center'>
                                                 <Button style={{ margin: '2px 5px' }} variant="outlined" startIcon={<EditIcon />} onClick={() => {
                                                     setUserId(data.id)
-                                                }} >
+                                                }}>
                                                     Edit
                                                 </Button >
                                                 <Button style={{ margin: '2px 5px' }} color='error' variant="outlined" startIcon={<DeleteIcon />}>

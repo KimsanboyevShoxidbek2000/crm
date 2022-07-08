@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../Admin/componentsStyle/CopStyle.css'
+import '../components/Admin/componentsStyle/CopStyle.css'
 
 import { Button } from '@mui/material';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';

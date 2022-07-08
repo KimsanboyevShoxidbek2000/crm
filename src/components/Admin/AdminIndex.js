@@ -29,6 +29,7 @@ import TeachersList from "../Teachers/TeachersList";
 import GroupsList from "../../core/GroupsList";
 import TeacherCreate from "../Teachers/TeacherCreate";
 import ReceptionList from "../Reception/ReceptionList";
+import GroupCreate from "../../core/GroupCreate";
 
 
 
@@ -148,7 +149,6 @@ const AdminIndex = () => {
                                                                 <li>
                                                                     <Link to='/receptionList'><span ><RiUserReceived2Fill /></span> <span className="none">Receptions</span></Link>
                                                                 </li>
-
 
                                                             </>
                                                         )
@@ -278,6 +278,7 @@ const AdminIndex = () => {
                                             <Route path='GroupsList' element={<GroupsList />} />
                                             <Route path='teacherCreate' element={<TeacherCreate />} />
                                             <Route path='receptionList' element={<ReceptionList />} />
+                                            <Route path='groupCreate' element={<GroupCreate/>}/>
                                         </Routes>
                                     </>
                                 )
