@@ -45,6 +45,9 @@
                             background-color: #20DF7F;
                             color: white;
                         }
+                        &:focus{
+                            outline: none;
+                        }
                     }
                 }
             }

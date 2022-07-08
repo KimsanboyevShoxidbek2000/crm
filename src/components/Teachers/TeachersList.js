@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
 
@@ -19,16 +19,16 @@ import EditIcon from '@mui/icons-material/Edit';
 import { FiSearch } from 'react-icons/fi';
 
 import '../Admin/componentsStyle/CopStyle.css'
-import {useGet} from '../../hooks/useGet'
+import { useGet } from '../../hooks/useGet'
 
 const TeachersList = () => {
     const [search, setSearch] = useState(false)
     const [getSearch, setGetSearch] = useState('');
-    const [userId , setUserId] = useState(null)
-    const editUser = useGet(`accounts/teacher-list/${userId}`)
+    const [userId, setUserId] = useState(null)
+ 
     const techerList = useGet('accounts/teacher-list/')
-    console.log(editUser);
 
+    
     const columns = [
         { id: '1', label: '#', minWidth: 40 },
         { id: 'firstname', label: 'Firstname', minWidth: 150 },
@@ -74,7 +74,7 @@ const TeachersList = () => {
     return (
         <>
             <div className='teacher-list'>
-                <Paper sx={{ width: '100%' }} style={{borderRadius: '15px 15px 0 15px'}}>
+                <Paper sx={{ width: '100%' }} style={{ borderRadius: '15px 15px 0 15px' }}>
                     <div className='teacher-header'>
                         <div className="teacher-header-left">
                             <div>
@@ -99,7 +99,7 @@ const TeachersList = () => {
                             </div>
                         </div>
                     </div>
-                    <TableContainer sx={{ maxHeight: "calc(86vh - 160px)" , minHeight:'calc(86vh - 160px)' }}>
+                    <TableContainer sx={{ maxHeight: "calc(86vh - 160px)", minHeight: 'calc(86vh - 160px)' }}>
                         <Table stickyHeader aria-label="sticky table">
                             <TableHead>
                                 <TableRow>
@@ -114,13 +114,13 @@ const TeachersList = () => {
                             </TableHead>
                             <TableBody>
                                 {techerList.filter(data => data.first_name.toLowerCase().includes(getSearch.toLowerCase()))
-                                    .map((data) => {
+                                    .map((data , index) => {
                                         return (
                                             <TableRow hover role="checkbox" tabIndex={-1} key={data.id}>
                                                 <TableCell>
-                                                    {
-                                                      
-                                                    }                                                                                           
+                                                  {
+                                                   index +1
+                                                  }
                                                 </TableCell>
                                                 <TableCell>
                                                     {data.first_name}
@@ -141,7 +141,7 @@ const TeachersList = () => {
                                                     {data.salary}
                                                 </TableCell>
                                                 <TableCell align='center'>
-                                                    <Button  style={{ margin: '2px 5px' }} variant="outlined" startIcon={<EditIcon />} onClick={() => {
+                                                    <Button style={{ margin: '2px 5px' }} variant="outlined" startIcon={<EditIcon />} onClick={() => {
                                                         setUserId(data.id)
                                                     }} >
                                                         Edit

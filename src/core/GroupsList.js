@@ -109,12 +109,12 @@ const Group = () => {
                         </TableHead>
                         <TableBody>
                             {getGroup.filter(data => data.name.toLowerCase().includes(getSearch.toLowerCase()))
-                                .map((data) => {
+                                .map((data , index) => {
                                     return (
                                         <TableRow hover role="checkbox" tabIndex={-1} key={data.id}>
                                             <TableCell>
                                                 {
-
+                                                   index + 1
                                                 }
                                             </TableCell>
                                             <TableCell>

@@ -316,11 +316,11 @@ const StudentsList = () => {
                             </TableHead>
                             <TableBody>
                                 {datas.filter(data => data.first_name.toLowerCase().includes(getSearch.toLowerCase()))
-                                    .map((data) => {
+                                    .map((data , index) => {
                                         return (
                                             <TableRow hover role="checkbox" tabIndex={-1} key={data.id}>
                                                 <TableCell>
-                                                    {data.id}
+                                                    {index + 1}
                                                 </TableCell>
                                                 <TableCell>
                                                     {data.first_name}

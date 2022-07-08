@@ -12,7 +12,7 @@ import { Button, Menu, MenuItem } from "@mui/material";
 
 // icons
 import { BsFillPersonFill } from 'react-icons/bs'
-import { RiBarChartHorizontalLine , RiUserReceived2Fill} from 'react-icons/ri';
+import { RiBarChartHorizontalLine, RiUserReceived2Fill } from 'react-icons/ri';
 import { GiTeacher } from 'react-icons/gi'
 
 import { MdPersonalInjury, MdGroups } from 'react-icons/md'
@@ -59,7 +59,22 @@ const AdminIndex = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+    const Profile_outside = () => {
+        localStorage.setItem("data", JSON.stringify(
+            {
+                is_superuser: false,
+                is_student: false,
+                is_teacher: false,
+                is_accountant: false,
+                is_reception: false
+            }
+        ))
+        navigate('/');
+        dispatch(profileoutside())
+        handleClose()
 
+    }
+ 
     useEffect(() => {
         const data = window.localStorage.getItem('data')
         if (data) {
@@ -195,7 +210,7 @@ const AdminIndex = () => {
                     className={`${menu ? 'app-right-active' : ''} app-right`}
                     style={
                         ((superuser || response.is_superuser) || (reception || response.is_reception) || (student || response.is_student) || (teacher || response.is_teacher) || (accountant || response.is_accountant))
-                            ? { width: '100%' , paddingLeft: '1%' , paddingRight: '1%' , paddingTop: '1vh'}
+                            ? { width: '100%', paddingLeft: '1%', paddingRight: '1%', paddingTop: '1vh' }
                             : { width: '100%' }
                     }
                 >
@@ -236,22 +251,13 @@ const AdminIndex = () => {
                                                     'aria-labelledby': 'basic-button',
                                                 }}
                                             >
-                                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                               {
+                                                (superuser || response.is_superuser)
+                                                ?(<></>)
+                                                :(<><MenuItem onClick={handleClose}>Profile</MenuItem></>)
+                                               }
+                                                <MenuItem onClick={() => Profile_outside()}>Profile outside</MenuItem>
                                                 <MenuItem onClick={handleClose}>My account</MenuItem>
-                                                <MenuItem onClick={() => {
-                                                    localStorage.setItem("data", JSON.stringify(
-                                                        {
-                                                            is_superuser: false,
-                                                            is_student: false,
-                                                            is_teacher: false,
-                                                            is_accountant: false,
-                                                            is_reception: false
-                                                        }
-                                                    ))
-                                                    navigate('/');
-                                                    dispatch(profileoutside())
-                                                    handleClose()
-                                                }}>Logout</MenuItem>
                                             </Menu>
                                         </div>
                                     </nav>

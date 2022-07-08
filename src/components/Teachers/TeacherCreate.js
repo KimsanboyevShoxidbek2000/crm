@@ -30,11 +30,10 @@ const TeacherCreate = () => {
 
 
     const changeHandler = (e) => {
-        const file = e.target.value;
-        setFaceImg(file);
-        setUserImg(URL.createObjectURL(e.target.value))
+       const file = e.target.files[0]
+       setUserImg(file)
     }
-     
+    //  console.log(URL.createObjectURL(userImg));
       
 
     const handleSubmit = (e) => {
@@ -111,7 +110,7 @@ const TeacherCreate = () => {
                                     left: 'calc(50% - 90px)',
                                     top: '10px',
                                     cursor: 'pointer',
-                                }} src={`${faceImg ? `${faceImg}` : `https://cdn-icons-png.flaticon.com/512/149/149071.png`}`} alt="error" />
+                                }} src={`${userImg ? `${URL.createObjectURL(userImg)}` : `https://cdn-icons-png.flaticon.com/512/149/149071.png`}`} alt="error" />
                             </label>
                         </div>
                         <div className="col-lg-6 col-md-6 col-12 col-sm-12 page_inputs">
