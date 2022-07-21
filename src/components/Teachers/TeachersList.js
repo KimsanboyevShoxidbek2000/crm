@@ -20,15 +20,22 @@ import { FiSearch } from 'react-icons/fi';
 
 import '../Admin/componentsStyle/CopStyle.css'
 import { useGet } from '../../hooks/useGet'
+import axios from 'axios';
 
 const TeachersList = () => {
     const [search, setSearch] = useState(false)
     const [getSearch, setGetSearch] = useState('');
-    const [userId, setUserId] = useState(null)
+    // const [userId, setUserId] = useState(null)
     const autoFocus = useRef()
     const techerList = useGet('accounts/teacher-list/')
+     
+    const editFun = async(id) => {
+        const res = await axios.get(`https://testcrmapi1.herokuapp.com/accounts/teacher-edit/${id}`)
+        const response = await res.data
+        console.log(response);
+    }
 
-    
+
     const columns = [
         { id: '1', label: '#', minWidth: 40 },
         { id: 'firstname', label: 'Firstname', minWidth: 150 },
@@ -70,7 +77,6 @@ const TeachersList = () => {
             minWidth: 200
         },
     ];
-
     return (
         <>
             <div className='teacher-list'>
@@ -139,11 +145,11 @@ const TeachersList = () => {
                                                     {data.percent}
                                                 </TableCell>
                                                 <TableCell>
-                                                    {data.salary}
+                                                   {/* <img src={data.image} alt="" /> */}
                                                 </TableCell>
                                                 <TableCell align='center'>
-                                                    <Button style={{ margin: '2px 5px' }} variant="outlined" startIcon={<EditIcon />} onClick={() => {
-                                                        setUserId(data.id)
+                                                    <Button style={{ margin: '2px 5px' }} variant="outlined" startIcon={<EditIcon />} onClick={() => {                                          
+                                                        editFun(data.id)
                                                     }} >
                                                         Edit
                                                     </Button >

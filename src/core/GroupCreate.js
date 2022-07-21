@@ -17,10 +17,8 @@ const GroupCreate = () => {
         e.preventDefault()
         console.log(subject , lesName , teacher , price, from_time , level , to_time, );
 
-
         setLesName('')
         setTeacher('')
-        // setPhone('')
         setPrice('')
         setFrom_time('')
         setLevel('')

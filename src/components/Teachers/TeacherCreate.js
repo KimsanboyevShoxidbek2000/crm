@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../Admin/componentsStyle/CopStyle.css'
 // import usePost from '../../hooks/usePost';
 import { Button } from '@mui/material';
@@ -6,7 +6,7 @@ import GroupAddIcon from '@mui/icons-material/GroupAdd';
 
 import { useGet } from '../../hooks/useGet';
 import axios from 'axios';
-import {usePut} from '../../hooks/usePut';
+// import {usePut} from '../../hooks/usePut';
 
 const url = process.env.REACT_APP_CRM_API
 
@@ -17,41 +17,25 @@ const TeacherCreate = () => {
     const [address, setAddress] = useState('')
     const [percent, setPercent] = useState('')
     const [subject, setSubject] = useState('')
-    const [userImg, setUserImg] = useState(null);
-    const [faceImg, setFaceImg] = useState(null)
-    const [index ,  setIndex] = useState(-1)
+    const [userImg, setUserImg] = useState('');
+    const [faceImg, setFaceImg] = useState('')
 
 
-    const getSubject = useGet('core/subject-list/')
-    const [userId , setUserId]  = useState(null)
-    const getUserId = useGet()
-
-
+    const getSubject = useGet('core/subject-list/');
 
 
     const changeHandler = (e) => {
-       const file = e.target.files[0]
-       setUserImg(file)
+     
+        setUserImg(e.target.files[0])
+
     }
-    //  console.log(URL.createObjectURL(userImg));
-      
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        let formData = new FormData()
-        formData.append('image', userImg)
 
         if (lastName.length > 0 && firstName.length > 0) {
-             
-             if(index > -1){
-                   
-             }
-           
-
-
-
-
-
+            let formData = new FormData()
+            formData.append('img' , userImg)
             let data = {
                 first_name: firstName,
                 last_name: lastName,
@@ -59,22 +43,25 @@ const TeacherCreate = () => {
                 address: address,
                 percent: parseInt(percent),
                 subject: parseInt(subject),
-                image: faceImg
+                image: formData
             }
+
+           
             axios.post(`${url}accounts/teacher-create/`, data)
                 .then(res => res.data)
                 .then(data => console.log(data))
+                console.log({
+                    first_name: firstName,
+                    last_name: lastName,
+                    phone: phone,
+                    address: address,
+                    percent: parseInt(percent),
+                    subject: parseInt(subject),
+                    image: formData
+                });
         }
 
-        console.log({
-            first_name: firstName,
-            last_name: lastName,
-            phone: phone,
-            address: address,
-            percent: parseInt(percent),
-            subject: parseInt(subject),
-            image: faceImg
-        });
+      
 
         setFirstName('')
         setLastName('')
@@ -101,7 +88,7 @@ const TeacherCreate = () => {
 
                                 }}
                                 htmlFor="user-img" className='userImg'>
-                                <input   accept='.png, .jpg, .jpeg' style={{ opacity: 0 }} type="file" id='user-img' onChange={changeHandler} />
+                                <input accept='.png, .jpg, .jpeg' style={{ opacity: 0 }} type="file" id='user-img' onChange={changeHandler} />
                                 <img style={{
                                     position: 'absolute',
                                     width: '90px',
