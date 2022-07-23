@@ -5,7 +5,7 @@ import { createSlice  ,} from '@reduxjs/toolkit';
 const authSlice = createSlice({
     name: "auth",
     initialState: {
-        superuser: false,
+        superuser: true,
         student: false,
         teacher: false,
         accountant: false,
