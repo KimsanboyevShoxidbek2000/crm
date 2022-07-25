@@ -18,17 +18,17 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { FiSearch } from 'react-icons/fi';
 
-import '../Admin/componentsStyle/CopStyle.css'
+import '../../components/Admin/componentsStyle/CopStyle.css'
 import { useGet } from '../../hooks/useGet'
 import axios from 'axios';
 
-const TeachersList = () => {
+const SubjectList = () => {
     const [search, setSearch] = useState(false)
     const [getSearch, setGetSearch] = useState('');
     // const [userId, setUserId] = useState(null)
     const autoFocus = useRef()
-    const techerList = useGet('accounts/teacher-list/')
-     
+    const techerList = useGet('core/subject-list/')
+     console.log(techerList);
     const editFun = async(id) => {
         const res = await axios.get(`https://testcrmapi1.herokuapp.com/accounts/teacher-edit/${id}`)
         const response = await res.data
@@ -38,38 +38,8 @@ const TeachersList = () => {
 
     const columns = [
         { id: '1', label: '#', minWidth: 40 },
-        { id: 'firstname', label: 'Firstname', minWidth: 150 },
-        {
-            id: 'lastname',
-            label: 'Lastname',
-            align: 'left',
-            minWidth: 150
-        },
-        {
-            id: 'address',
-            label: 'Address',
-            align: 'left',
-            minWidth: 150
-        },
-        {
-            id: 'phone',
-            label: 'Phone',
-            align: 'left',
-            minWidth: 150
-        },
-        {
-            id: 'percent',
-            label: 'Percent',
-            align: "left",
-            minWidth: 150
-        },
-        {
-            id: 'salary',
-            label: 'Salary',
-            align: 'left',
-            minWidth: 150
-
-        },
+        { id: 'firstname', label: 'Subject Name', minWidth: 150 },
+       
         {
             id: 'action',
             label: 'Action',
@@ -79,23 +49,22 @@ const TeachersList = () => {
     ];
     return (
         <>
-            <div className='teacher-list'>
+            <div className='subject-list'>
                 <Paper sx={{ width: '100%' }} style={{ borderRadius: '15px 15px 0 15px' }}>
-                    <div className='teacher-header'>
-                        <div className="teacher-header-left">
+                    <div className='subject-header'>
+                        <div className="subject-header-left">
                             <div>
-                                <h2 className='teacher-staff'>
-                                Subject Details
-
+                                <h2 className='subject-staff'>
+                                    Subject Details
                                 </h2>
                             </div>
                             <div>
-                                <Link to='/teacherCreate' className='nav-item'><span>Add Teacher</span><i></i></Link>
+                                <Link to='/subjectCreate' className='nav-item'><span>Add Subjects</span><i></i></Link>
                                 {/* <Link to='/teachersList' className='nav-item' ><span>Pendding Students</span><i></i></Link> */}
                                 {/* <Link to='/teachersList' className='nav-item'><span>Active Students</span><i></i></Link> */}
                             </div>
                         </div>
-                        <div className="teacher-header-right">
+                        <div className="subject-header-right">
                             <div className={`${search ? 'active' : ''}  search`}>
                                 <input ref={autoFocus} value={getSearch} onChange={(e) => setGetSearch(e.target.value)} type="text" className={`input`} placeholder="Search..." />
                                 <button className="btn" onClick={() => {
@@ -121,7 +90,7 @@ const TeachersList = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {techerList.filter(data => data.first_name.toLowerCase().includes(getSearch.toLowerCase()))
+                                {techerList.filter(data => data.name.toLowerCase().includes(getSearch.toLowerCase()))
                                     .map((data , index) => {
                                         return (
                                             <TableRow hover role="checkbox" tabIndex={-1} key={data.id}>
@@ -131,23 +100,9 @@ const TeachersList = () => {
                                                   }
                                                 </TableCell>
                                                 <TableCell>
-                                                    {data.first_name}
+                                                    {data.name}
                                                 </TableCell>
-                                                <TableCell>
-                                                    {data.last_name}
-                                                </TableCell>
-                                                <TableCell>
-                                                    {data.phone}
-                                                </TableCell>
-                                                <TableCell>
-                                                    {data.address}
-                                                </TableCell>
-                                                <TableCell>
-                                                    {data.percent}
-                                                </TableCell>
-                                                <TableCell>
-                                                   {/* <img src={data.image} alt="" /> */}
-                                                </TableCell>
+                                               
                                                 <TableCell align='center'>
                                                     <Button style={{ margin: '2px 5px' }} variant="outlined" startIcon={<EditIcon />} onClick={() => {                                          
                                                         editFun(data.id)
@@ -170,4 +125,4 @@ const TeachersList = () => {
     )
 }
 
-export default TeachersList;
+export default SubjectList;
